@@ -152,6 +152,28 @@ class TweTimelineWidget extends Widget_Base {
 				'title_field' => '{{{ list_title }}}',
 			]
 		);
+       // Add custom buttons below Add Item button
+			$this->add_control(
+				'timeline_buttons_below_repeater',
+				[
+					'type' => \Elementor\Controls_Manager::RAW_HTML,
+					'raw' => '
+					
+						<div style="margin-top: 15px; display: flex; gap: 10px; justify-content: space-between;">
+							<a href="https://cooltimeline.com/demo/elementor-timeline-widget/?utm_source=twe_plugin&utm_medium=inside&utm_campaign=demo&utm_content=content_tab_settings" target="_blank" 
+								class="elementor-button elementor-button-default">
+								View Demos
+							</a>
+
+							<a href="https://cooltimeline.com/plugin/elementor-timeline-widget-pro/?utm_source=twe_plugin&utm_medium=inside&utm_campaign=get_pro&utm_content=content_tab_settings#pricing" target="_blank" 
+								class="elementor-button elementor-button-default">
+								Get Pro 💎
+							</a>
+						</div>
+					',
+					'content_classes' => 'twe-timeline-buttons',
+				]
+			);
 
 	$this->end_controls_section();
 	/*------- BoxStyle ------------*/
@@ -225,7 +247,7 @@ class TweTimelineWidget extends Widget_Base {
 		'label' => __( 'Content Fonts Color', '3r-elementor-timeline-widget' ),
 		'type' => \Elementor\Controls_Manager::COLOR,
 		'selectors' => [
-			'{{WRAPPER}} .be-pack .timeline-panel, .be-pack .timeline-panel p' => 'color: {{content_color}}',
+			'{{WRAPPER}} .be-pack .timeline-panel, {{WRAPPER}} .be-pack .timeline-panel p' => 'color: {{content_color}}',
 		],
 		'default' => '#333333',
 	]
@@ -366,6 +388,25 @@ class TweTimelineWidget extends Widget_Base {
 				],
 			]
 		);
+		$this->add_control(
+			'after_add_item_buttons',
+			[
+				'type' => \Elementor\Controls_Manager::RAW_HTML,
+				'raw' => '
+					<div style="margin-top:15px;">
+						<a href="https://your-link-1.com" target="_blank" class="elementor-button elementor-button-default" style="margin-right:10px;">
+							Button One
+						</a>
+
+						<a href="https://your-link-2.com" target="_blank" class="elementor-button elementor-button-default">
+							Button Two
+						</a>
+					</div>
+				',
+				'content_classes' => 'your-custom-buttons-container',
+			]
+		);
+
 		$this->end_controls_section();
 
 	}
@@ -381,10 +422,10 @@ class TweTimelineWidget extends Widget_Base {
 	 */
 	protected function render() {
 		$settings = $this->get_settings_for_display();
-        $direction=$settings['tl_change_direction'];
+		$direction = isset($settings['tl_change_direction']) ? $settings['tl_change_direction'] : '';
 		$data	  = $settings['list'];
 		$this->add_render_attribute( 'title', 'class', 'be-title' );
-        
+        $direction = in_array($direction, array('left', ''), true) ? $direction : '';
         $count = $direction =='left' ? 1 : 2;
 
 		echo '<ul class="be-pack timeline">';
@@ -429,7 +470,7 @@ class TweTimelineWidget extends Widget_Base {
 						?>
 						<div class="be-desc">
 						<?php 
-						$title_html = sprintf( '<%1$s %2$s>%3$s</%1$s>', Utils::validate_html_tag( $settings['header_size'] ), $this->get_render_attribute_string( 'title' ), $content['list_title']);
+						$title_html = sprintf( '<%1$s %2$s>%3$s</%1$s>', Utils::validate_html_tag( $settings['header_size'] ), $this->get_render_attribute_string( 'title' ) ,esc_html( $content['list_title'] ));
 						// PHPCS - the variable $title_html holds safe data.
 						echo $title_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 						?>
