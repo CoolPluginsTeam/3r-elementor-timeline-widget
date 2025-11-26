@@ -1,4 +1,4 @@
-=== Timeline Widget for Elementor ===
+=== Vertical Timeline Widget for Elementor ===
 Contributors: rafiul17,tbyte
 Donate link: https://www.paypal.com/donate?hosted_button_id=ZC2N2PY77T9HL
 Tags: Elementor, addons, timeline, widget, roadmap

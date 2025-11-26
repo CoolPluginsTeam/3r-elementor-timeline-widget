@@ -1,6 +1,6 @@
 <?php
 /**
- * Timeline Widget for Elementor.
+ * Vertical Timeline Widget for Elementor.
  *
  * @since 1.0.0
  */
@@ -152,29 +152,7 @@ class TweTimelineWidget extends Widget_Base {
 				'title_field' => '{{{ list_title }}}',
 			]
 		);
-       // Add custom buttons below Add Item button
-			$this->add_control(
-				'timeline_buttons_below_repeater',
-				[
-					'type' => \Elementor\Controls_Manager::RAW_HTML,
-					'raw' => '
-					
-						<div style="margin-top: 15px; display: flex; gap: 10px; justify-content: space-between;">
-							<a href="https://cooltimeline.com/demo/elementor-timeline-widget/?utm_source=twe_plugin&utm_medium=inside&utm_campaign=demo&utm_content=content_tab_settings" target="_blank" 
-								class="elementor-button elementor-button-default">
-								View Demos
-							</a>
-
-							<a href="https://cooltimeline.com/plugin/elementor-timeline-widget-pro/?utm_source=twe_plugin&utm_medium=inside&utm_campaign=get_pro&utm_content=content_tab_settings#pricing" target="_blank" 
-								class="elementor-button elementor-button-default">
-								Get Pro 💎
-							</a>
-						</div>
-					',
-					'content_classes' => 'twe-timeline-buttons',
-				]
-			);
-
+   
 	$this->end_controls_section();
 	/*------- BoxStyle ------------*/
 	$this->start_controls_section(

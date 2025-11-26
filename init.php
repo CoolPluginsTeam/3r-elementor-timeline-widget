@@ -1,14 +1,13 @@
 <?php
 
 /*
- * Plugin Name: Timeline Widget for Elementor
- * Description: Timeline Widget for Elementor Plugin add timeline element to Elementor Page builder.
+ * Plugin Name: Vertical Timeline Widget for Elementor
+ * Description: Vertical Timeline Widget for Elementor Plugin add timeline element to Elementor Page builder.
  * Plugin URI: https://wordpress.org/plugins/3r-elementor-timeline-widget
  * Version:2.6
  * Requires at least: 5.2
  * Requires PHP:7.2
  * Author: Cool Plugins
- * Author URI: https://coolplugins.net/?utm_source=twe_plugin&utm_medium=inside&utm_campaign=author_page&utm_content=plugins_list
  * License:GPL v2 or later
  * License URI:https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: 3r-elementor-timeline-widget
@@ -59,9 +58,3 @@ class TweTimelinePlugin {
 }
  
 TweTimelinePlugin::get_instance()->init();
-
-add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), 'twe_add_pro_link' );
-function twe_add_pro_link( $links ) {
-    $links[] = '<a style="font-weight:bold; color:#852636;" href="https://cooltimeline.com/plugin/elementor-timeline-widget-pro/?utm_source=twe_plugin&utm_medium=inside&utm_campaign=get_pro&utm_content=plugins_list#pricing target="_blank"">Get Pro</a>';
-    return $links;
-}
