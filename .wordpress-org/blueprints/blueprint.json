@@ -1,0 +1,71 @@
+{
+  "landingPage": "/wp-admin/post.php?post=85154&action=elementor",
+  "preferredVersions": {
+    "php": "8.2",
+    "wp": "latest"
+  },
+  "siteOptions": {
+    "elementor_onboarded": "1"
+  },
+  "phpExtensionBundles": [
+    "kitchen-sink"
+  ],
+  "steps": [
+    {
+      "step": "login",
+      "username": "admin",
+      "password": "password"
+    },
+    {
+      "step": "installTheme",
+      "themeData": {
+        "resource": "wordpress.org/themes",
+        "slug": "hello-elementor"
+      },
+      "options": {
+        "activate": true
+      }
+    },
+    {
+      "step": "installPlugin",
+      "pluginData": {
+        "resource": "wordpress.org/plugins",
+        "slug": "elementor"
+      },
+      "options": {
+        "activate": true
+      }
+    },
+    {
+      "step": "installPlugin",
+      "pluginData": {
+        "resource": "wordpress.org/plugins",
+        "slug": "3r-elementor-timeline-widget"
+      },
+      "options": {
+        "activate": true
+      }
+    },
+    {
+      "step": "importWxr",
+      "file": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/CoolPluginsTeam/wp-playground-repo/main/timeline/vertical-timeline.xml"
+      }
+    },
+    {
+      "step": "runPHP",
+      "code": "<?php\nob_start();\nrequire_once '/wordpress/wp-load.php';\nob_end_clean();\n\n// Set 'Vertical timeline' as homepage\n$page = get_page_by_title('Vertical timeline');\nif ($page) {\n  update_option('show_on_front', 'page');\n  update_option('page_on_front', $page->ID);\n  echo \"✅ 'Vertical timeline' page set as homepage.\";\n} else {\n  echo \"❌ 'Vertical timeline' page not found.\";\n}"
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/mu-plugins/hide-notices.php",
+      "data": "<?php\nadd_action('admin_head', function() {\n    echo '<style>\n        .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation1{\n            display: none !important;\n        }\n    </style>';\n});"
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/mu-plugins/elementor-force-close-popup.php",
+      "data": "<?php\nif (!defined('ABSPATH')) { exit; }\n\n// Elementor Editor ke andar JS inject karo\nfunction elementor_editor_force_close() {\n    echo '<script>\n        // Editor ready hone ka wait\n        var checkInterval = setInterval(function() {\n            // Elementor global object check\n            if (window.elementor !== undefined) {\n\n                // Ab popup close logic run karo\n                var closeInterval = setInterval(function() {\n                    var btn = document.querySelector(\"#e-announcements-root .close-button\");\n                    if (btn) {\n                        btn.click();\n                    }\n                }, 300);\n\n                clearInterval(checkInterval);\n            }\n        }, 200);\n    </script>';\n}\nadd_action('elementor/editor/footer', 'elementor_editor_force_close');\n"
+    }
+  ]
+}
