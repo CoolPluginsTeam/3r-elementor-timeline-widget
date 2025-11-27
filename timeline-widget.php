@@ -366,25 +366,7 @@ class TweTimelineWidget extends Widget_Base {
 				],
 			]
 		);
-		$this->add_control(
-			'after_add_item_buttons',
-			[
-				'type' => \Elementor\Controls_Manager::RAW_HTML,
-				'raw' => '
-					<div style="margin-top:15px;">
-						<a href="https://your-link-1.com" target="_blank" class="elementor-button elementor-button-default" style="margin-right:10px;">
-							Button One
-						</a>
-
-						<a href="https://your-link-2.com" target="_blank" class="elementor-button elementor-button-default">
-							Button Two
-						</a>
-					</div>
-				',
-				'content_classes' => 'your-custom-buttons-container',
-			]
-		);
-
+	
 		$this->end_controls_section();
 
 	}
