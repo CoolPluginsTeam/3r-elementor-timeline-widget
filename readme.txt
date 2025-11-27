@@ -3,8 +3,8 @@ Contributors: rafiul17,tbyte
 Donate link: https://www.paypal.com/donate?hosted_button_id=ZC2N2PY77T9HL
 Tags: Elementor, addons, timeline, widget, roadmap
 Requires at least: 5.2
-Tested up to: 6.8
-Stable tag: 2.6
+Tested up to: 6.8.3
+Stable tag: 2.6.1
 License: GPL v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
  
@@ -36,6 +36,11 @@ Video tutorial in Russian language
 
 
 == Changelog ==
+
+= 2.6.1 =
+Release Date - 27 Nov , 2025*
+* Fixed Addressed security vulnerabilities.
+
 = 2.5 =
 
 * Release Date - 14 July , 2025*
