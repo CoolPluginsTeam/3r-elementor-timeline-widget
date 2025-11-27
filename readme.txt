@@ -1,19 +1,17 @@
 === Vertical Timeline Widget for Elementor ===
 Contributors: satindersingh,coolplugins,narinder-singh,rafiul17
 Donate link: https://paypal.me/CoolPlugins/10USD/
-Tags: Elementor, addons, timeline, widget, roadmap
+Tags: Elementor, vertical-timeline, elementor-timeline, timeline, widget
 Requires at least: 5.2
 Tested up to: 6.8.3
 Stable tag: 2.6.1
 License: GPL v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
  
-Add Elementor Timeline Widget with easy way.
-
+Use a vertical timeline widget for Elementor to showcase your journey, story, milestones or roadmap in a clean Elementor timeline layout.
 
 == Description ==
 Adds Timeline Addons/Widgets that are specifically designed to be used in conjunction with the Elementor Page Builder.
-
 
 Video tutorial link:
 
