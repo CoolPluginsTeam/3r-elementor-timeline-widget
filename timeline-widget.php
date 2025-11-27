@@ -225,7 +225,7 @@ class TweTimelineWidget extends Widget_Base {
 		'label' => __( 'Content Fonts Color', '3r-elementor-timeline-widget' ),
 		'type' => \Elementor\Controls_Manager::COLOR,
 		'selectors' => [
-			'{{WRAPPER}} .be-pack .timeline-panel, {{WRAPPER}} .be-pack .timeline-panel p' => 'color: {{content_color}}',
+			'{{WRAPPER}} .be-pack .timeline-panel, .be-pack .timeline-panel p' => 'color: {{content_color}}',
 		],
 		'default' => '#333333',
 	]
