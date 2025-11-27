@@ -1,6 +1,6 @@
 <?php
 /**
- * Timeline Widget for Elementor.
+ * Vertical Timeline Widget for Elementor.
  *
  * @since 1.0.0
  */
@@ -152,7 +152,7 @@ class TweTimelineWidget extends Widget_Base {
 				'title_field' => '{{{ list_title }}}',
 			]
 		);
-
+   
 	$this->end_controls_section();
 	/*------- BoxStyle ------------*/
 	$this->start_controls_section(
@@ -366,6 +366,7 @@ class TweTimelineWidget extends Widget_Base {
 				],
 			]
 		);
+	
 		$this->end_controls_section();
 
 	}
@@ -381,10 +382,10 @@ class TweTimelineWidget extends Widget_Base {
 	 */
 	protected function render() {
 		$settings = $this->get_settings_for_display();
-        $direction=$settings['tl_change_direction'];
+		$direction = isset($settings['tl_change_direction']) ? $settings['tl_change_direction'] : '';
 		$data	  = $settings['list'];
 		$this->add_render_attribute( 'title', 'class', 'be-title' );
-        
+        $direction = in_array($direction, array('left', ''), true) ? $direction : '';
         $count = $direction =='left' ? 1 : 2;
 
 		echo '<ul class="be-pack timeline">';
@@ -429,7 +430,7 @@ class TweTimelineWidget extends Widget_Base {
 						?>
 						<div class="be-desc">
 						<?php 
-						$title_html = sprintf( '<%1$s %2$s>%3$s</%1$s>', Utils::validate_html_tag( $settings['header_size'] ), $this->get_render_attribute_string( 'title' ), $content['list_title']);
+						$title_html = sprintf( '<%1$s %2$s>%3$s</%1$s>', Utils::validate_html_tag( $settings['header_size'] ), $this->get_render_attribute_string( 'title' ) ,esc_html( $content['list_title'] ));
 						// PHPCS - the variable $title_html holds safe data.
 						echo $title_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 						?>

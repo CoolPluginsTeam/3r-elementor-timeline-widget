@@ -1,14 +1,13 @@
 <?php
 
 /*
- * Plugin Name: Timeline Widget for Elementor
- * Description: Timeline Widget for Elementor Plugin add timeline element to Elementor Page builder.
+ * Plugin Name: Vertical Timeline Widget for Elementor
+ * Description: Vertical Timeline Widget for Elementor Plugin add timeline element to Elementor Page builder.
  * Plugin URI: https://wordpress.org/plugins/3r-elementor-timeline-widget
- * Version:2.6
+ * Version:2.6.1
  * Requires at least: 5.2
  * Requires PHP:7.2
- * Author: B.M. Rafiul Alam
- * Author URI: https://themesbyte.com/
+ * Author: Cool Plugins
  * License:GPL v2 or later
  * License URI:https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: 3r-elementor-timeline-widget
@@ -43,21 +42,18 @@ class TweTimelinePlugin {
    }
  
    public function widgets_registered() {
- 
-      // We check if the Elementor plugin has been installed / activated.
-      if(defined('ELEMENTOR_PATH') && class_exists('Elementor\Widget_Base')){
 
-         // We look for any theme overrides for this custom Elementor element.
-         // If no theme overrides are found we use the default one in this plugin.
-         $widget_file = get_template_directory() .'/elementor-timeline/timeline-widget.php';
-         $template_file = locate_template($widget_file);
-         if ( !$template_file || !is_readable( $template_file ) ) {
-            $template_file = plugin_dir_path(__FILE__).'/timeline-widget.php' ; 
-         }
-         if ( $template_file && is_readable( $template_file ) ) {
-            require_once $template_file;
-         }
+      if ( ! current_user_can( 'edit_posts' ) ) {
+         return;
       }
+
+      if ( defined('ELEMENTOR_PATH') && class_exists('Elementor\Widget_Base') ) {
+         $template_file = plugin_dir_path(__FILE__) . 'timeline-widget.php';
+     
+         if ( is_readable($template_file) ) {
+             require_once $template_file;
+         }
+     }
    }
 }
  
