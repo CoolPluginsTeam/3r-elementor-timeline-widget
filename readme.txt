@@ -4,7 +4,7 @@ Donate link: https://paypal.me/CoolPlugins/10USD/
 Tags: Elementor, vertical-timeline, elementor-timeline, timeline, widget
 Requires at least: 5.2
 Tested up to: 6.8.3
-Stable tag: 2.6.1
+Stable tag: 2.6.2
 License: GPL v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
  
@@ -34,6 +34,9 @@ Video tutorial in Russian language
 
 
 == Changelog ==
+
+= 2.6.2 - 02 December 2025 =
+* Fixed an issue where the timeline was not visible on the front end.
 
 = 2.6.1 - 27 November 2025 =
 * Transferred plugin ownership to [Satinder Singh](https://profiles.wordpress.org/satindersingh/) (Co-founder, [Cool Plugins](https://coolplugins.net)).
