@@ -163,7 +163,7 @@ class TweTimelineWidget extends Widget_Base {
                 'type' => \Elementor\Controls_Manager::RAW_HTML,
 				'raw'       => '<div class="elementor-control-raw-html"><div class="elementor-control-notice elementor-control-notice-type-info twae-migration-notice">
 										<div class="elementor-control-notice-icon">
-										<img class="twae-highlight-icon" src="'.esc_url( TWE_PLUGIN_URL . 'assets/images/twae-highlight-icon.svg' ).'" width="250" alt="Highlight Icon" />
+										<img class="twae-highlight-icon" src="'.esc_url( TWE_PLUGIN_URL . 'assets/images/twae-highlight-icon.svg' ).'" width="250" alt="Highlight Icon" style="filter: brightness(0) saturate(100%) invert(32%) sepia(84%) saturate(627%) hue-rotate(190deg) brightness(92%) contrast(92%);"/>
 										</div>
 										<div class="elementor-control-notice-main">
 										<div class="elementor-control-notice-main-content ">Do you want to migrate this timeline into Timeline Widget Pro to use the advanced features?</div>
