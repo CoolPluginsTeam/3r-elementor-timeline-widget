@@ -152,30 +152,38 @@ class TweTimelineWidget extends Widget_Base {
 				'title_field' => '{{{ list_title }}}',
 			]
 		);
+		if ( defined( 'TWAE_PRO_VERSION' ) ) { 
+			if (get_option('twae_hide_migration_notice_editor') !== 'yes' ) {
 
-		
-	  if ( defined( 'TWAE_PRO_VERSION' ) ) { 
-       if ( ! get_option('twae_migration_done') ) {
+				$this->add_control(
+					'twae_migrate_notice',
+					[
+						'type' => \Elementor\Controls_Manager::RAW_HTML,
+						'raw'  => '<div class="elementor-control-raw-html">
+							<div class="elementor-control-notice elementor-control-notice-type-info twae-migration-notice" style="position: relative;">
+								<button type="button" class="elementor-control-notice-dismiss twae_hide_migration_notice_editor" style="position: absolute; top: 5px; right: 5px; z-index: 10;">
+									<i class="eicon-close"></i>
+								</button>
+								<div class="elementor-control-notice-icon">
+									<img class="twae-highlight-icon" src="'.esc_url( TWE_PLUGIN_URL . 'assets/images/twae-highlight-icon.svg' ).'" width="250" alt="Highlight Icon" style="filter: brightness(0) saturate(100%) invert(32%) sepia(84%) saturate(627%) hue-rotate(190deg) brightness(92%) contrast(92%);" />
+								</div>
+								<div class="elementor-control-notice-main">
+									<div class="elementor-control-notice-main-content">
+										Do you want to migrate this timeline into Timeline Widget Pro to use the advanced features?
+									</div>
+									<div class="elementor-control-notice-main-actions">
+										<button type="button" class="elementor-button e-btn e-info e-btn-1" id="twae-run-migration">Migrate Now</button>
+									</div>
+								</div>
+							</div>
+						</div>',
+						'content_classes' => 'twae-migrate-box',
+					]
+				);
+			}
+		}
 
-        $this->add_control(
-            'twae_migrate_notice',
-            [
-                'type' => \Elementor\Controls_Manager::RAW_HTML,
-				'raw'       => '<div class="elementor-control-raw-html"><div class="elementor-control-notice elementor-control-notice-type-info twae-migration-notice">
-										<div class="elementor-control-notice-icon">
-										<img class="twae-highlight-icon" src="'.esc_url( TWE_PLUGIN_URL . 'assets/images/twae-highlight-icon.svg' ).'" width="250" alt="Highlight Icon" style="filter: brightness(0) saturate(100%) invert(32%) sepia(84%) saturate(627%) hue-rotate(190deg) brightness(92%) contrast(92%);"/>
-										</div>
-										<div class="elementor-control-notice-main">
-										<div class="elementor-control-notice-main-content ">Do you want to migrate this timeline into Timeline Widget Pro to use the advanced features?</div>
-											<div class="elementor-control-notice-main-actions">
-											<button type="button" class="elementor-button e-btn e-info e-btn-1" id="twae-run-migration">Migrate Now</button></button>
-										</div></div>
-										</div></div>',
-                'content_classes' => 'twae-migrate-box',
-            ]
-          );
-	   }
-	}
+
    
 	$this->end_controls_section();
 
