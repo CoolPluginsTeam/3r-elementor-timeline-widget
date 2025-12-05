@@ -22,10 +22,22 @@ define( 'TWE_PLUGIN_PATH', plugin_dir_path(__FILE__));
 
 add_action( 'elementor/preview/enqueue_styles', 'twe_enqueue_style' );
 add_action('wp_enqueue_scripts', 'twe_enqueue_style');
+add_action( 'elementor/editor/after_enqueue_styles', function() {
+
+    // Load your custom editor CSS
+    wp_enqueue_style(
+        'twe-editor-styles',
+        TWE_PLUGIN_URL . 'assets/css/twe-editor.css',
+        [],
+          time()
+    );
+
+});
 
 function twe_enqueue_style() {
     wp_enqueue_style( 'twe-preview', TWE_PLUGIN_URL  . 'assets/css/style.css', array());
 }
+
 
 class TweTimelinePlugin {
  
@@ -58,3 +70,9 @@ class TweTimelinePlugin {
 }
  
 TweTimelinePlugin::get_instance()->init();
+
+add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), 'twe_add_pro_link' );
+function twe_add_pro_link( $links ) {
+    $links[] = '<a style="font-weight:bold; color:#852636;" href="https://cooltimeline.com/plugin/elementor-timeline-widget-pro/?utm_source=twe_plugin&utm_medium=inside&utm_campaign=get_pro&utm_content=plugins_list#pricing target="_blank"">Get Pro</a>';
+    return $links;
+}

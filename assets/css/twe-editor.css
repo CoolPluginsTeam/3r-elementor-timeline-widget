@@ -1,0 +1,104 @@
+
+
+
+.elementor-control-twe_icon_type{
+   pointer-events: none !important;
+    opacity: 0.5 !important;
+    padding: 19px 18px 57px 8px !important;
+    border: 1px solid white;
+     background: rgb(0, 0, 0);
+    margin: 0px 5px;
+}
+
+
+.elementor-control-twe_title_link{
+     background: rgb(0, 0, 0);
+     pointer-events: none !important;
+      opacity: 0.5 !important;
+    padding: 8px 18px 58px 9px !important;
+   border: 1px solid white;
+   margin: 0px 5px;
+}
+
+
+.elementor-control-twe_extra_label,
+.elementor-control-twe_date_label,
+.elementor-control-twe_show_year_label {
+     pointer-events: none !important;
+      opacity: 0.5 !important;
+    background: rgb(0, 0, 0);
+    border: 1px solid white;
+     margin: 0px 10px;
+}
+.elementor-control-twe_date_label{
+border-top: none;
+ border-bottom: none;
+}
+.elementor-control-twe_show_year_label{
+    padding: 14px 10px 9px 10px !important;
+    border-bottom: none;
+}
+.elementor-control-twe_extra_label{
+    padding: 0px 11px 20px 9px !important;
+    margin-bottom: 5px;
+    border-top: none;
+}
+
+.elementor-control-twe_media{
+     pointer-events: none !important;
+      opacity: 0.5 !important;
+    background: rgb(0, 0, 0);
+    padding: 8px 18px 58px 9px !important;
+   border: 1px solid white;
+   margin: 0px 10px 5px 10px;
+}
+.twe-label-group-wrapper {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 6px;
+    background: #fafafa;
+}
+
+
+.twae-disabled-group::after {
+    content: "Available in Pro";
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    background: #d63638;
+    color: #fff;
+    padding: 4px 8px;
+    font-size: 11px;
+    border-radius: 3px;
+    z-index: 999;
+}
+.twae-upgrade-notice{
+      position: absolute;
+   top: -53px;
+    left: 14px;
+    line-height: 16px;
+    padding: 0px 7px 0px 0px;
+}
+.twae-midea-upgrade-notice{
+    position: absolute;
+    top: -60px;
+    left: 20px;
+    line-height: 16px;
+    padding: 0px 7px 0px 0px;
+}
+.twae-upgrade-content-notice{
+    position: absolute;
+    right: 55px;
+    top: -15px;
+    background: #d63638;
+    padding: 4px 8px;
+    font-size: 11px;
+    border-radius: 3px;
+    z-index: 999;
+}
+.twae-upgrade-content-notice a{
+ color: #fff;
+}
+ 
+
