@@ -8,6 +8,7 @@
  * Requires at least: 5.2
  * Requires PHP:7.2
  * Author: Cool Plugins
+* Author URI:  https://coolplugins.net/?utm_source=twe_plugin&utm_medium=inside&utm_campaign=author_page&utm_content=plugins_list
  * License:GPL v2 or later
  * License URI:https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: 3r-elementor-timeline-widget
@@ -18,8 +19,6 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 define( 'TWE_PLUGIN_URL', plugins_url( '/', __FILE__ ) );
 define( 'TWE_PLUGIN_PATH', plugin_dir_path(__FILE__));
-
-
 add_action( 'elementor/preview/enqueue_styles', 'twe_enqueue_style' );
 add_action('wp_enqueue_scripts', 'twe_enqueue_style');
 add_action( 'elementor/editor/after_enqueue_styles', function() {
@@ -32,6 +31,15 @@ add_action( 'elementor/editor/after_enqueue_styles', function() {
           time()
     );
 
+});
+add_action('elementor/editor/after_enqueue_scripts', function() {
+    wp_enqueue_script(
+        'twae-editor-js',
+        TWE_PLUGIN_URL . 'assets/js/twe-editor.js',
+        ['jquery'],
+        time(),
+        true
+    );
 });
 
 function twe_enqueue_style() {
@@ -75,4 +83,25 @@ add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), 'twe_add_pro_lin
 function twe_add_pro_link( $links ) {
     $links[] = '<a style="font-weight:bold; color:#852636;" href="https://cooltimeline.com/plugin/elementor-timeline-widget-pro/?utm_source=twe_plugin&utm_medium=inside&utm_campaign=get_pro&utm_content=plugins_list#pricing target="_blank"">Get Pro</a>';
     return $links;
+}
+add_filter( 'plugin_row_meta', 'twe_add_view_demo_row_meta', 10, 2 );
+function twe_add_view_demo_row_meta( $links, $file ) {
+    if ( $file === plugin_basename( __FILE__ ) ) {
+        $demo_link = '<a href="https://cooltimeline.com/demo/elementor-timeline-widget/vertical-timeline-widget-for-elementor/?utm_source=twe_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugin_list" target="_blank">View Demos</a>';
+        array_splice( $links, count( $links ), 0, $demo_link );
+    }
+    return $links;
+}
+
+/**
+ * AJAX: Hide Upgrade Notice
+ */
+add_action( 'wp_ajax_twae_hide_upgrade_notice_editor', 'twae_hide_upgrade_notice_editor_callback' );
+
+function twae_hide_upgrade_notice_editor_callback() {
+    update_option( 'twae_hide_upgrade_notice_editor', 'yes' );
+
+    wp_send_json_success([
+        'message' => 'Upgrade notice dismissed'
+    ]);
 }
