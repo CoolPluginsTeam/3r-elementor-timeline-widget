@@ -73,10 +73,6 @@ class TweTimelinePlugin {
  
    public function widgets_registered() {
 
-      if ( ! current_user_can( 'edit_posts' ) ) {
-         return;
-      }
-
       if ( defined('ELEMENTOR_PATH') && class_exists('Elementor\Widget_Base') ) {
          $template_file = plugin_dir_path(__FILE__) . 'timeline-widget.php';
      

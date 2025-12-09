@@ -1,19 +1,17 @@
 === Vertical Timeline Widget for Elementor ===
-Contributors: rafiul17,tbyte
-Donate link: https://www.paypal.com/donate?hosted_button_id=ZC2N2PY77T9HL
-Tags: Elementor, addons, timeline, widget, roadmap
+Contributors: satindersingh,coolplugins,narinder-singh,rafiul17
+Donate link: https://paypal.me/CoolPlugins/10USD/
+Tags: Elementor, vertical-timeline, elementor-timeline, timeline, widget
 Requires at least: 5.2
-Tested up to: 6.8.3
+Tested up to: 6.9
 Stable tag: 2.6.3
 License: GPL v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
  
-Add Elementor Timeline Widget with easy way.
-
+Use a vertical timeline widget for Elementor to showcase your journey, story, milestones or roadmap in a clean Elementor timeline layout.
 
 == Description ==
 Adds Timeline Addons/Widgets that are specifically designed to be used in conjunction with the Elementor Page Builder.
-
 
 Video tutorial link:
 
@@ -41,84 +39,68 @@ Video tutorial in Russian language
 Release Date - 10 Dec , 2025*
 * Added helpful timeline plugin recommendations to make it easier for users to discover related features.
 
-= 2.6.1 =
-Release Date - 27 Nov , 2025*
-* Fixed Addressed security vulnerabilities.
+= 2.6.2 - 02 December 2025 =
+* Fixed an issue where the timeline was not visible on the front end.
 
-= 2.5 =
+= 2.6.1 - 27 November 2025 =
+* Transferred plugin ownership to [Satinder Singh](https://profiles.wordpress.org/satindersingh/) (Co-founder, [Cool Plugins](https://coolplugins.net)).
+* Refreshed plugin icon and banner assets for a modern and consistent visual identity.
+* Implemented several code optimizations to improve stability and maintainability.
+* Renamed plugin to "Vertical Timeline Widget for Elementor" for better clarity and branding.
 
-* Release Date - 14 July , 2025*
-* Removed the Licensing/Trademark Violation.
+= 2.5 - 14 July 2025 =
+* Removed the Licensing/Trademark violation.
 
-= 2.4 =
+= 2.4 - 04 May 2025 =
+* Removed Elementor deprecated functions.
 
-* Release Date - 04 May , 2025*
+= 2.3 - 21 March 2024 =
+* Removed the "notice" folder due to vulnerability-related issues.
 
-* Removed the Elementor deprecated functions.
+= 2.2 - 17 March 2024 =
+* Added heading tag option for the title.
+* Rechecked vulnerability (CVSS: 5.4).
 
-= 2.3 =
+= 2.1 - 10 December 2023 =
+* Fixed medium-severity vulnerability (CVE-2023-49755).
+* Vulnerability Type: Broken Access Control (CVSS: 5.4)
 
-* Release Date - 21 March, 2024*
+= 2.0 - 02 January 2023 =
+* Tested with WordPress 6.11.
+* Tested with Elementor 3.9.2.
+* Fixed several bugs.
 
-* Removed notice folder for Vulnerability issues. 
+= 1.9 - 31 August 2022 =
+* Tested with the latest WordPress version.
+* Tested with the latest Elementor version.
+* Fixed some bugs.
 
+= 1.8 - 24 April 2022 =
+* Checked compatibility with WordPress 5.9.
+* Checked compatibility with Elementor 3.6.4.
 
-= 2.2 =
+= 1.6 - 08 September 2021 =
+* Fixed front-end editing bug.
+* Fixed Elementor deprecated function warnings.
+* Checked compatibility with WordPress 5.8.
+* Checked compatibility with Elementor 3.4.3.
 
-* Release Date - 17 March, 2024*
+= 1.5 - 17 September 2020 =
+* Fixed bugs.
 
-* Add Heading Tag option for the title
-* Re-check Vulnerability, CVSS: 5.4
+= 1.3 - 16 September 2020 =
+* Added box direction.
+* Organized widget controls.
+* Fixed bugs.
 
-= 2.1 =
-
-* Release Date - 10 December, 2023*
-
-* Fix a Medium vulnerability ID CVE-2023-49755
-* Vulnerability type: Broken Access Control, CVSS: 5.4
-
-= 2.0 =
-
-* Release Date - 02 January, 2023*
-* Tested on Latest WordPress v 6.11
-* Tested on Latest Elementor v 3.9.2
-* Fix Some bugs
-
-= 1.9 =
-
-* Release Date - 31 August, 2022*
-* Tested on Latest WordPress
-* Tested on Latest Elementor
-* Fix Some bugs
-
-= 1.8 =
-
-* Release Date - 24 April, 2022*
-* Check on WordPress version 5.9
-* Check on latest Elementor version 3.6.4
- 
-= 1.6 =
-* Release Date - 8th September, 2021*
-* Fix front-end edit bug.
-* Fix Elementor deprecated functions warning.
-* Check on WordPress version 5.8
-* Check on latest Elementor version 3.4.3
-
-= 1.5 =
-* Release Date - 17th September, 2020*
-* Fix some bug. 
-
-= 1.3 =
-* Release Date - 16th September, 2020*
-* Add Box direction, Fix some bug, Organize widget controls. 
-
-= 1.2 =
-* Release Date - 16th January, 2019*
-* Add Image Option, Image Style tab, Box style Option, Content update without refresh.
+= 1.2 - 16 January 2019 =
+* Added image option and image style tab.
+* Added box style options.
+* Enabled content updates without page refresh.
 
 = 1.1 =
-* Add Style Tab, Title Color, Typography, Timeline Color. 
+* Added Style tab.
+* Added title color, typography, and timeline color options.
 
-= 1.0 =
-* Release Date - 21th October, 2018*
-* Initial Release
+= 1.0 - 21 October 2018 =
+* Initial release.
