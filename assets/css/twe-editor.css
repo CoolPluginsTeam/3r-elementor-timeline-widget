@@ -87,38 +87,29 @@ border-bottom: 1px solid #2563EB;
       padding: 17px 19px 21px 19px !important;
 }
 
+
+.twae-upgrade-color-notice,.twae-upgrade-content-notice,.twe-upgrade-button-notice-layout-section{
+        position: absolute;
+    right: calc(50% - 70px) !important;
+    width: 140px;
+    top: 0px;
+    background: #EDACFB;
+    height: 24px;
+    font-size: 11px;
+    line-height: 1em;
+    border-radius: 3px;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+}
 .twae-upgrade-content-notice{
-    position: absolute;
-    right: calc(50% - 60px) !important; 
     top: -15px;
-   background: #EDACFB;
-    height: 20px;
-    padding: 5px;
-    font-size: 11px;
-    border-radius: 3px;
-    z-index: 999;
 }
-.twae-upgrade-color-notice{
-     position: absolute;
-    right: calc(50% - 60px) !important;  
-         top: 2px;
-   background: #EDACFB;
-   height: 20px;
-    padding: 5px;
-    font-size: 11px;
-    border-radius: 3px;
-    z-index: 999;
-}
+
 .twe-upgrade-button-notice-layout-section{
-     position: absolute;
-    right: calc(50% - 60px) !important;  
-         top: -6px;
-   background: #EDACFB;
-   height: 20px;
-    padding: 5px;
-    font-size: 11px;
-    border-radius: 3px;
-    z-index: 999;
+    top: -8px;
 }
 .twae-upgrade-content-notice a,  .twae-upgrade-color-notice a ,.twe-upgrade-button-notice-layout-section a{
  color: #000000;
@@ -126,3 +117,5 @@ border-bottom: 1px solid #2563EB;
 .twae-upgrade-content-notice:hover a , .twae-upgrade-color-notice:hover a ,.twe-upgrade-button-notice-layout-section:hover a{
     color: black;
 }
+
+

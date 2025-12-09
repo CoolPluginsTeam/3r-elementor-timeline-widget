@@ -112,7 +112,7 @@ class TweTimelineWidget extends Widget_Base {
 		$repeater->add_control(
 			'twe_show_year_label',
 			array(
-				'label'        => __( 'Year / Label (Top) <a href="https://cooltimeline.com/demo/elementor-timeline-widget/vertical-timeline-widget-for-elementor/?utm_source=twe_plugin&utm_medium=inside&utm_campaign=demo&utm_content=content_tab_settings" target="_blank" style=" pointer-events: all; color:  #EDACFB;">(View Demos ⇗)</a>', '3r-elementor-timeline-widget' ),
+				'label'        => __( 'Year / Label (Top) <a href="https://cooltimeline.com/demo/elementor-timeline-widget//?utm_source=vtwe_plugin&utm_medium=inside&utm_campaign=demo&utm_content=content_tab_settings" target="_blank" style=" pointer-events: all; color:  #EDACFB;">(Demo ⇗)</a>', '3r-elementor-timeline-widget' ),
 				'type'         => \Elementor\Controls_Manager::SWITCHER,
 				'label_on'     => __( 'Show', 'twae' ),
 				'label_off'    => __( 'Hide', 'twae' ),
@@ -161,7 +161,7 @@ class TweTimelineWidget extends Widget_Base {
 					'type' => \Elementor\Controls_Manager::RAW_HTML,
 					'raw'  => '
 						<div class="twae-upgrade-content-notice">
-							<a href="https://cooltimeline.com/plugin/elementor-timeline-widget-pro/?utm_source=twe_plugin&utm_medium=inside&utm_campaign=get_pro&utm_content=content_tab_settings#pricing" 
+							<a href="https://cooltimeline.com/plugin/elementor-timeline-widget-pro/?utm_source=vtwe_plugin&utm_medium=inside&utm_campaign=get_pro&utm_content=content_tab_settings#pricing" 
 							target="_blank" 
 							class="twae-upgrade-link">
 								UPGRADE TO PRO 💎
@@ -220,7 +220,7 @@ class TweTimelineWidget extends Widget_Base {
 					'type' => \Elementor\Controls_Manager::RAW_HTML,
 					'raw'  => '
 						<div class="twae-upgrade-color-notice">
-							<a href="https://cooltimeline.com/plugin/elementor-timeline-widget-pro/?utm_source=twe_plugin&utm_medium=inside&utm_campaign=get_pro&utm_content=advanced_tab_settings#pricing" 
+							<a href="https://cooltimeline.com/plugin/elementor-timeline-widget-pro/?utm_source=vtwe_plugin&utm_medium=inside&utm_campaign=get_pro&utm_content=advanced_tab_settings#pricing" 
 							target="_blank" 
 							class="twae-upgrade-link">
 								UPGRADE TO PRO 💎
@@ -353,7 +353,7 @@ class TweTimelineWidget extends Widget_Base {
 									</div>
 									<div class="elementor-control-notice-main-actions">
 										<a class="elementor-button e-btn e-info e-btn-1" style="color:white;"
-										href="https://cooltimeline.com/plugin/elementor-timeline-widget-pro/?utm_source=twe_plugin&utm_medium=inside&utm_campaign=get_pro&utm_content=content_tab_settings#pricing"
+										href="https://cooltimeline.com/plugin/elementor-timeline-widget-pro/?utm_source=vtwe_plugin&utm_medium=inside&utm_campaign=get_pro&utm_content=content_tab_settings#pricing"
 										target="_blank">
 											Get Pro
 										</a>
@@ -426,6 +426,7 @@ class TweTimelineWidget extends Widget_Base {
 				),
 			)
 		);
+
 	
 		// Story Content Alignment
 		$this->add_control(
@@ -504,7 +505,7 @@ class TweTimelineWidget extends Widget_Base {
 					'type' => \Elementor\Controls_Manager::RAW_HTML,
 					'raw'  => '
 						<div class="twe-upgrade-button-notice-layout-section">
-							<a href="https://cooltimeline.com/plugin/elementor-timeline-widget-pro/?utm_source=twe_plugin&utm_medium=inside&utm_campaign=get_pro&utm_content=layout_tab_settings#pricing" 
+							<a href="https://cooltimeline.com/plugin/elementor-timeline-widget-pro/?utm_source=vtwe_plugin&utm_medium=inside&utm_campaign=get_pro&utm_content=layout_tab_settings#pricing" 
 							target="_blank" 
 							class="twae-upgrade-link">
 								UPGRADE TO PRO 💎

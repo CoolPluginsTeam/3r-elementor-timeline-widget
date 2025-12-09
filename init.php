@@ -8,7 +8,7 @@
  * Requires at least: 5.2
  * Requires PHP:7.2
  * Author: Cool Plugins
-* Author URI:  https://coolplugins.net/?utm_source=twe_plugin&utm_medium=inside&utm_campaign=author_page&utm_content=plugins_list
+* Author URI:  https://coolplugins.net/?utm_source=vtwe_plugin&utm_medium=inside&utm_campaign=author_page&utm_content=plugins_list
  * License:GPL v2 or later
  * License URI:https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: 3r-elementor-timeline-widget
@@ -40,7 +40,17 @@ add_action('elementor/editor/after_enqueue_scripts', function() {
         time(),
         true
     );
+
+    wp_localize_script(
+        'twae-editor-js',
+        'twae_ajax_obj',
+        [
+            'ajax_url' => admin_url('admin-ajax.php'),
+            'nonce'    => wp_create_nonce('twae_upgrade_notice_nonce'),
+        ]
+    );
 });
+
 
 function twe_enqueue_style() {
     wp_enqueue_style( 'twe-preview', TWE_PLUGIN_URL  . 'assets/css/style.css', array());
@@ -81,13 +91,13 @@ TweTimelinePlugin::get_instance()->init();
 
 add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), 'twe_add_pro_link' );
 function twe_add_pro_link( $links ) {
-    $links[] = '<a style="font-weight:bold; color:#852636;" href="https://cooltimeline.com/plugin/elementor-timeline-widget-pro/?utm_source=twe_plugin&utm_medium=inside&utm_campaign=get_pro&utm_content=plugins_list#pricing target="_blank"">Get Pro</a>';
+    $links[] = '<a style="font-weight:bold; color:#852636;" href="https://cooltimeline.com/plugin/elementor-timeline-widget-pro/?utm_source=vtwe_plugin&utm_medium=inside&utm_campaign=get_pro&utm_content=plugins_list#pricing" target="_blank">Get Pro</a>';
     return $links;
 }
 add_filter( 'plugin_row_meta', 'twe_add_view_demo_row_meta', 10, 2 );
 function twe_add_view_demo_row_meta( $links, $file ) {
     if ( $file === plugin_basename( __FILE__ ) ) {
-        $demo_link = '<a href="https://cooltimeline.com/demo/elementor-timeline-widget/vertical-timeline-widget-for-elementor/?utm_source=twe_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugin_list" target="_blank">View Demos</a>';
+        $demo_link = '<a href="https://cooltimeline.com/demo/elementor-timeline-widget/vertical-timeline-widget-for-elementor/?utm_source=vtwe_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins_list" target="_blank">View Demo</a>';
         array_splice( $links, count( $links ), 0, $demo_link );
     }
     return $links;
@@ -99,9 +109,13 @@ function twe_add_view_demo_row_meta( $links, $file ) {
 add_action( 'wp_ajax_twae_hide_upgrade_notice_editor', 'twae_hide_upgrade_notice_editor_callback' );
 
 function twae_hide_upgrade_notice_editor_callback() {
+
+    check_ajax_referer( 'twae_upgrade_notice_nonce', 'security' );
+      
     update_option( 'twae_hide_upgrade_notice_editor', 'yes' );
 
     wp_send_json_success([
         'message' => 'Upgrade notice dismissed'
     ]);
 }
+
