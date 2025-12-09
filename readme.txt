@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/donate?hosted_button_id=ZC2N2PY77T9HL
 Tags: Elementor, addons, timeline, widget, roadmap
 Requires at least: 5.2
 Tested up to: 6.8.3
-Stable tag: 2.6.1
+Stable tag: 2.6.3
 License: GPL v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
  
@@ -36,6 +36,10 @@ Video tutorial in Russian language
 
 
 == Changelog ==
+
+= 2.6.3 =
+Release Date - 10 Dec , 2025*
+* Added helpful timeline plugin recommendations to make it easier for users to discover related features.
 
 = 2.6.1 =
 Release Date - 27 Nov , 2025*
