@@ -20,13 +20,30 @@ jQuery(document).on('click', '.twae_hide_upgrade_notice_editor', function () {
 });
 
 
-jQuery(document).on('focus', 'select[data-setting="twe_layout"]', function () {
+// jQuery(document).on('focus', 'select[data-setting="twe_layout"]', function () {
     
-    const $select = jQuery(this);
-    $select.val('centered');
-    $select.find('option:not([value="centered"])').prop('disabled', true);
-});
+//     const $select = jQuery(this);
+//     $select.val('centered');
+//     $select.find('option:not([value="centered"])').prop('disabled', true);
+// });
 
+jQuery(document).on('focus', 'select[data-setting="twe_layout"]', function () {
+
+    const $select = jQuery(this);
+
+    // force default if current value is not allowed
+    const allowedValues = ['centered', 'one-sided'];
+
+    if (!allowedValues.includes($select.val())) {
+        $select.val('centered');
+    }
+
+    // disable all except allowed ones
+    $select.find('option').each(function () {
+        const val = jQuery(this).val();
+        jQuery(this).prop('disabled', !allowedValues.includes(val));
+    });
+});
 
 
 
