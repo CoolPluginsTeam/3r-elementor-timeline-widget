@@ -112,7 +112,7 @@ class TweTimelineWidget extends Widget_Base {
 		$repeater->add_control(
 			'twe_show_year_label',
 			array(
-				'label'        => __( 'Year / Label (Top) <a href="https://cooltimeline.com/demo/elementor-timeline-widget//?utm_source=vtwe_plugin&utm_medium=inside&utm_campaign=demo&utm_content=content_tab_settings" target="_blank" style=" pointer-events: all; color:  #EDACFB;">(Demo ⇗)</a>', '3r-elementor-timeline-widget' ),
+				'label'        => __( 'Year / Label (Top) <a href="https://cooltimeline.com/elementor-widget/vertical-timeline-widget-for-elementor/?utm_source=vtwe_plugin&utm_medium=inside&utm_campaign=demo&utm_content=content_tab_settings" target="_blank" style=" pointer-events: all; color:  #EDACFB;">(Demo ⇗)</a>', '3r-elementor-timeline-widget' ),
 				'type'         => \Elementor\Controls_Manager::SWITCHER,
 				'label_on'     => __( 'Show', 'twae' ),
 				'label_off'    => __( 'Hide', 'twae' ),
@@ -667,29 +667,26 @@ class TweTimelineWidget extends Widget_Base {
 		);
 
 		$this->add_control(
-    'circle_color',
-    [
-        'label' => __( 'Icon Background / Connector Color', '3r-elementor-timeline-widget' ),
-        'type'  => \Elementor\Controls_Manager::COLOR,
-        'selectors' => [
+		'circle_color',
+		[
+			'label' => __( 'Icon Background / Connector Color', '3r-elementor-timeline-widget' ),
+			'type'  => \Elementor\Controls_Manager::COLOR,
+			'selectors' => [
 
-            // Icon
-            '{{WRAPPER}} .timeline li .tl-circ' =>
-                'background: {{VALUE}};',
+				'{{WRAPPER}} .timeline li .tl-circ' =>
+					'background: {{VALUE}};',
 
-            // Two-sided arrows
-            '{{WRAPPER}} .timeline li:not(.timeline-inverted) .timeline-panel:before' =>
-                'border-left-color: {{VALUE}};',
+				'{{WRAPPER}} .timeline li:not(.timeline-inverted) .timeline-panel:before' =>
+					'border-left-color: {{VALUE}};',
 
-            '{{WRAPPER}} .timeline li.timeline-inverted .timeline-panel:before' =>
-                'border-right-color: {{VALUE}};',
+				'{{WRAPPER}} .timeline li.timeline-inverted .timeline-panel:before' =>
+					'border-right-color: {{VALUE}};',
 
-            // ✅ One-sided arrow (CRITICAL)
-            '{{WRAPPER}} .timeline.timeline-one-sided li .timeline-panel:before' =>
-                'border-right-color: {{VALUE}}; border-left-width:0;',
-        ],
-    ]
-);
+				'{{WRAPPER}} .timeline.timeline-one-sided li .timeline-panel:before' =>
+					'border-right-color: {{VALUE}}; border-left-width:0;',
+			],
+		]
+	);
 
 
 
@@ -807,34 +804,33 @@ class TweTimelineWidget extends Widget_Base {
 			: '';
 
 		echo '<ul class="be-pack timeline ' . esc_attr( $layout_class ) . '">';
-
+        
 		// echo '<ul class="be-pack timeline">';
+		$count = ( $direction === 'left' ) ? 1 : 0;
 		foreach($data as $index=>$content){
 		    $title_html = sprintf(
-	'<%1$s %2$s>%3$s</%1$s>',
-	Utils::validate_html_tag( $settings['header_size'] ),
-	$this->get_render_attribute_string( 'title' ),
-	esc_html( $content['list_title'] )
-);
+				'<%1$s %2$s>%3$s</%1$s>',
+				Utils::validate_html_tag( $settings['header_size'] ),
+				$this->get_render_attribute_string( 'title' ),
+				esc_html( $content['list_title'] )
+			);
 
-$content_html = '<div class="be-content">' . wp_kses_post( $content['list_content'] ) . '</div>';
+         $content_html = '<div class="be-content">' . wp_kses_post( $content['list_content'] ) . '</div>';
+		    
+		    $image = '';
 
-			$image = '';
+			if ( ! empty( $content['image']['id'] ) ) {
 
-				$image = '';
+				$image_html = Group_Control_Image_Size::get_attachment_image_html(
+					$content,
+					'thumbnail', 
+					'image'
+				);
 
-if ( ! empty( $content['image']['id'] ) ) {
-
-	$image_html = Group_Control_Image_Size::get_attachment_image_html(
-		$content,
-		'thumbnail', // MUST match control name in repeater
-		'image'
-	);
-
-	if ( $image_html ) {
-		$image = '<div class="timeline_pic pull-left">' . $image_html . '</div>';
-	}
-}
+				if ( $image_html ) {
+					$image = '<div class="timeline_pic pull-left">' . $image_html . '</div>';
+				}
+			} 
 
 
 			else {
@@ -842,81 +838,84 @@ if ( ! empty( $content['image']['id'] ) ) {
 			}
 
 			if ( $is_one_sided ) {
-    echo '<li class="timeline-right">';
-} else {
-    static $count = 0;
-    $count++;
 
-    if ( $count % 2 === 0 ) {
-        echo '<li class="timeline-inverted">';
-    } else {
-        echo '<li class="timeline-right">';
-    }
-}
+				echo '<li class="timeline-right">';
+
+			} else {
+
+				$count++;
+
+				if ( $count % 2 === 0 ) {
+					echo '<li class="timeline-inverted">';
+				} else {
+					echo '<li class="timeline-right">';
+				}
+			}
+
 
 			?> 
 			<div class="tl-circ"></div>
-			  <div class="timeline-panel">
-				<div class="tl-heading">
-			<div class="tl-content">
+		 <div class="timeline-panel">
+		   <div class="tl-heading">
+			 <div class="tl-content">
 
-	<?php if ( $is_one_sided ) : ?>
+			    <?php if ( $is_one_sided ) : ?>
 
-		<div class="be-desc">
-			<?php echo $title_html; // phpcs:ignore ?>
-		</div>
+						<div class="be-desc">
+							<?php echo $title_html;  ?>
+						</div>
 
-		<?php
-		echo wp_kses(
-			$image,
-			[
-				'img' => [
-					'src'    => [],
-					'title'  => [],
-					'width'  => [],
-					'height' => [],
-					'class'  => [],
-				],
-				'div' => [
-					'class' => [],
-				],
-			]
-		);
-		?>
+						<?php
+						echo wp_kses(
+							$image,
+							[
+								'img' => [
+									'src'    => [],
+									'title'  => [],
+									'width'  => [],
+									'height' => [],
+									'class'  => [],
+								],
+								'div' => [
+									'class' => [],
+								],
+							]
+						);
+						?>
 
-		<?php echo $content_html; // phpcs:ignore ?>
+						<?php echo $content_html; ?>
 
-	<?php else : ?>
+			     <?php else : ?>
 
-		<?php
-		echo wp_kses(
-			$image,
-			[
-				'img' => [
-					'src'    => [],
-					'title'  => [],
-					'width'  => [],
-					'height' => [],
-					'class'  => [],
-				],
-				'div' => [
-					'class' => [],
-				],
-			]
-		);
-		?>
+						<?php
+						echo wp_kses(
+							$image,
+							[
+								'img' => [
+									'src'    => [],
+									'title'  => [],
+									'width'  => [],
+									'height' => [],
+									'class'  => [],
+								],
+								'div' => [
+									'class' => [],
+								],
+							]
+						);
+						?>
 
-		<div class="be-desc">
-			<?php echo $title_html;  ?>
-			<?php echo $content_html;  ?>
-		</div>
+						<div class="be-desc">
+							<?php echo $title_html;  ?>
+							<?php echo $content_html;  ?>
+						</div>
 
-	<?php endif; ?>
-
-</div>
+					<?php endif; ?>
 
 				</div>
-			  </div>
+
+			</div>
+		</div>
 			</li>
 			<?php } ?> 
       </ul>
