@@ -85,7 +85,7 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 == Changelog ==
 
 = Version 2.7 | 19 December 2025 =
-* New: Added One-Sided Timeline layout for a cleaner look.
+* New: Added One-Sided Timeline layout.
 * Fix: Resolved various minor bugs and stability issues.
 
 = Version 2.6.3 | 10 December 2025 =
