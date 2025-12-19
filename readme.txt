@@ -4,8 +4,8 @@ Donate link: https://paypal.me/CoolPlugins/10USD/
 Tags: Elementor, vertical-timeline, elementor-timeline, timeline, widget
 Requires at least: 5.2
 Tested up to: 6.9
-Requires PHP: 7.4
-Stable tag: 2.6.3
+Requires PHP: 7.2
+Stable tag: 2.7
 License: GPL v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
  
@@ -56,6 +56,12 @@ You have to upgrade to **[Timeline Widget Pro](https://cooltimeline.com/plugin/e
 
 == Screenshot ==
 
+1.  Vertical Timeline Widget Demo Preview
+2.  Both Sided Layout Preview 
+3.  One Sided Layout Preview
+2.  Timeline Item Content Settings
+4.  Timeline Style & Advanced Settings
+
 == Frequently Asked Questions ==
 
 =Does this plugin work with Elementor Free?=
@@ -78,7 +84,11 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 == Changelog ==
 
-= Version 2.6.3 | 10 Dec, 2025 =
+= Version 2.7 | 19 December 2025 =
+* New: Added One-Sided Timeline layout for a cleaner look.
+* Fix: Resolved various minor bugs and stability issues.
+
+= Version 2.6.3 | 10 December 2025 =
 * Added helpful timeline plugin recommendations to make it easier for users to discover related features.
 
 = Version 2.6.2 | 02 December 2025 =
