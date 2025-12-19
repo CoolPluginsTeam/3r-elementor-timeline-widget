@@ -416,7 +416,7 @@ class TweTimelineWidget extends Widget_Base {
 				'default' => 'centered',
 				'options' => array(
 					'centered'               => 'Vertical Right / Left (Free)',
-					'one-sided'              => 'Vertical Right Only(Free)',
+					'one-sided'              => 'Vertical Right Only(Pro)',
 					'left-sided'             => 'Vertical Left Only(Pro)',
 					'compact'                => 'Vertical Compact(Pro)',
 					'modern'                    => 'Vertical Tab(Pro)',
@@ -549,7 +549,7 @@ class TweTimelineWidget extends Widget_Base {
 		'label' => __( 'Title Fonts Color', '3r-elementor-timeline-widget' ),
 		'type' => \Elementor\Controls_Manager::COLOR,
 		'selectors' => [
-				'{{WRAPPER}} .tl-heading .tl-content .be-desc .be-title' => 'color: {{VALUE}}',
+				'{{WRAPPER}} .tl-heading h4' => 'color: {{VALUE}}',
 			],
 		'default' => '#333333',
 	]
@@ -588,7 +588,7 @@ class TweTimelineWidget extends Widget_Base {
 		'label' => __( 'Content Fonts Color', '3r-elementor-timeline-widget' ),
 		'type' => \Elementor\Controls_Manager::COLOR,
 		'selectors' => [
-			'{{WRAPPER}} .be-pack .timeline-panel, {{WRAPPER}} .be-pack .timeline-panel p' => 'color: {{content_color}}',
+			'{{WRAPPER}} .be-pack .timeline-panel, .be-pack .timeline-panel p' => 'color: {{content_color}}',
 		],
 		'default' => '#333333',
 	]
@@ -612,60 +612,19 @@ class TweTimelineWidget extends Widget_Base {
 			]
 		);
 
-			$this->add_control(
-				'theme_color',
-				[
-					'label' => __( 'Border Color', '3r-elementor-timeline-widget' ),
-					'type'  => \Elementor\Controls_Manager::COLOR,
-					'selectors' => [
-
-						'{{WRAPPER}} .timeline li .tl-circ' =>
-							'background: {{theme_color}}; border:5px solid #e6e6e6 !important;',
-
-						'{{WRAPPER}} .timeline li .timeline-panel' =>
-							'border-color: {{theme_color}};',
-
-						'{{WRAPPER}} .timeline:before' =>
-							'background-color: {{theme_color}};',
-
-						'{{WRAPPER}} .timeline li:not(.timeline-inverted) .timeline-panel:before' =>
-							'border-left-color: {{theme_color}};',
-
-						'{{WRAPPER}} .timeline li.timeline-inverted .timeline-panel:before' =>
-							'border-right-color: {{theme_color}};',
-
-						'{{WRAPPER}} .timeline.timeline-one-sided li .timeline-panel:before' =>
-							'border-right-color: {{theme_color}}; border-left-width: 0;',
-					],
-				]
-			);
-
-
-				
-			$this->add_control(
-			'bg_color',
-			[
-				'label' => __( 'Background Color', '3r-elementor-timeline-widget' ),
-				'type'  => \Elementor\Controls_Manager::COLOR,
-				'default' => '#fff',
+		$this->add_control(
+			'theme_color', [
+				'label' => __( 'Border Color', '3r-elementor-timeline-widget' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-
-					'{{WRAPPER}} .be-pack .timeline-panel' =>
-						'--twe-panel-bg: {{VALUE}}; background-color: {{VALUE}};',
-
-					'{{WRAPPER}} .timeline li:not(.timeline-inverted) .timeline-panel:after' =>
-						'border-left-color: var(--twe-panel-bg);',
-
-					'{{WRAPPER}} .timeline li.timeline-inverted .timeline-panel:after' =>
-						'border-right-color: var(--twe-panel-bg);',
-						
-						'{{WRAPPER}} .timeline.timeline-one-sided li .timeline-panel:after' =>
-                    'border-right-color: var(--twe-panel-bg); border-left-width:0;',
-
+					'{{WRAPPER}} .timeline li .tl-circ' => 'background: {{theme_color}};border:5px solid #e6e6e6 !important',
+					' .timeline li .timeline-panel:before' => 'border-left:15px solid {{theme_color}}; border-right:0px solid {{theme_color}};',
+					' .timeline li .timeline-panel' => 'border:1px solid {{theme_color}};',
+					' .timeline::before' => 'background-color:{{theme_color}};',
 				],
 			]
 		);
-
+		
 		$this->add_control(
 		'circle_color',
 		[
@@ -707,10 +666,7 @@ class TweTimelineWidget extends Widget_Base {
 				'label_off' => __( 'Right', '3r-elementor-timeline-widget' ),
 				'return_value' => 'left',
 				'default' => 'left',
-                'separator'=>'before',
-				 'condition' => [
-            'twe_layout!' => 'one-sided',
-        ],
+                'separator'=>'before'
 			]
 		);
 	
@@ -776,7 +732,7 @@ class TweTimelineWidget extends Widget_Base {
 				],
 			]
 		);
-
+	
 		$this->end_controls_section();
 
 	}
@@ -792,7 +748,6 @@ class TweTimelineWidget extends Widget_Base {
 	 */
 	protected function render() {
 		$settings = $this->get_settings_for_display();
-		$is_one_sided = ( isset( $settings['twe_layout'] ) && $settings['twe_layout'] === 'one-sided' );
 		$direction = isset($settings['tl_change_direction']) ? $settings['tl_change_direction'] : '';
 		$data	  = $settings['list'];
 		$this->add_render_attribute( 'title', 'class', 'be-title' );

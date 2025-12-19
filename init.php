@@ -1,5 +1,4 @@
 <?php
-
 /*
  * Plugin Name: Vertical Timeline Widget for Elementor
  * Description: Vertical Timeline Widget for Elementor Plugin add timeline element to Elementor Page builder.
@@ -30,9 +29,6 @@ add_action( 'elementor/editor/after_enqueue_styles', function() {
         [],
           time()
     );
-    wp_enqueue_style( 'font-awesome-5-solid', ELEMENTOR_ASSETS_URL . 'lib/font-awesome/css/solid.min.css',array(), 'all' );
-    wp_enqueue_style( 'font-awesome-5-fontawesome', ELEMENTOR_ASSETS_URL . 'lib/font-awesome/css/fontawesome.min.css',array(), 'all' );
-
 
 });
 add_action('elementor/editor/after_enqueue_scripts', function() {

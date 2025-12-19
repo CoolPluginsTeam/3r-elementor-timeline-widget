@@ -78,7 +78,7 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 == Changelog ==
 
-= Version 2.6.3 | 10 Dec, 2025 =
+= 2.6.3 | 10 December 2025 =
 * Added helpful timeline plugin recommendations to make it easier for users to discover related features.
 
 = Version 2.6.2 | 02 December 2025 =
