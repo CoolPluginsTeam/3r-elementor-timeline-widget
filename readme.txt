@@ -5,7 +5,7 @@ Tags: Elementor, vertical-timeline, elementor-timeline, timeline, widget
 Requires at least: 5.2
 Tested up to: 6.9
 Requires PHP: 7.2
-Stable tag: 2.7
+Stable tag: 2.7.1
 License: GPL v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
  
@@ -31,8 +31,8 @@ Simply **drag**, **drop**, and **customize** your timeline stories without writi
 
 * **Fully Responsive:** This plugin is fully responsive, ensuring that your timeline displays perfectly on all screen sizes.
 
-**[Check Demos](https://cooltimeline.com/demo/elementor-timeline-widget/vertical-timeline-widget-for-elementor/?utm_source=vtwe_plugin&utm_medium=readme&utm_campaign=get_pro&utm_content=check_demos)**
-
+**[Check Demos](https://cooltimeline.com/elementor-widget/vertical-timeline-widget-for-elementor/?utm_source=vtwe_plugin&utm_medium=readme&utm_campaign=get_pro&utm_content=check_demos)**
+                
 ### Upgrade to Pro Version
 You have to upgrade to **[Timeline Widget Pro](https://cooltimeline.com/plugin/elementor-timeline-widget-pro/?utm_source=vtwe_plugin&utm_medium=readme&utm_campaign=get_pro&utm_content=upgrade_to_pro#pricing)** to unlock more advanced features like: 
 * **Layout Options:** Choose from Vertical, Horizontal, and more timeline layouts to match your design needs.
@@ -42,8 +42,8 @@ You have to upgrade to **[Timeline Widget Pro](https://cooltimeline.com/plugin/e
 * **Story Migration:** You can easily migrate all your existing timeline stories to Timeline Widget Pro for Elementor without any data loss.
 
 ### Check our other plugins demos
-
-* **Cool Timeline:** Display your company's history, product roadmaps, personal stories, or key events using the built-in block or via simple shortcode. [View Demo](https://cooltimeline.com/demo/cool-timeline-free/?utm_source=vtwe_plugin&utm_medium=readme&utm_campaign=demo&utm_content=ctl_free_demo)
+                                                                                                                                                                    
+* **Cool Timeline:** Display your company's history, product roadmaps, personal stories, or key events using the built-in block or via simple shortcode. [View Demo](https://cooltimeline.com/demo/free-timeline/?utm_source=vtwe_plugin&utm_medium=readme&utm_campaign=demo&utm_content=ctl_free_demo)
 * **Timeline Block For Gutenberg:** Create interactive timelines directly within the WordPress Block Editor to display step-by-step tutorials, a company's history, and a product roadmap. [View Demo](https://cooltimeline.com/demo/gutenberg-timeline-block/?utm_source=vtwe_plugin&utm_medium=readme&utm_campaign=demo&utm_content=tbg_free_demo)
 * **Timeline Module Pro For Divi:** Showcase your personal story or company history using stunning vertical or horizontal timelines directly inside the Divi Builder. [View Demo](https://cooltimeline.com/divi/?utm_source=vtwe_plugin&utm_medium=readme&utm_campaign=demo&utm_content=tmdivi_pro_demo)
 
@@ -83,6 +83,10 @@ Not at all. Everything is controlled through Elementor's visual editor.
 You can report security bugs through the Patchstack Vulnerability Disclosure Program. The Patchstack team helps validate, triage, and handle any security vulnerabilities. [Report a security vulnerability](https://patchstack.com/database/vdp/template-events-calendar).
 
 == Changelog ==
+
+= Version 2.7.1 | 19 December 2025 =
+* Updated: Dashboard Links.
+* Tested up to:  Elementor 3.33.5 
 
 = Version 2.7 | 19 December 2025 =
 * New: Added One-Sided Timeline layout.
