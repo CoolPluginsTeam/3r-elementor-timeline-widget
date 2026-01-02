@@ -112,7 +112,7 @@ class TweTimelineWidget extends Widget_Base {
 		$repeater->add_control(
 			'twe_show_year_label',
 			array(
-				'label'        => __( 'Year / Label (Top) <a href="https://cooltimeline.com/demo/elementor-timeline-widget//?utm_source=vtwe_plugin&utm_medium=inside&utm_campaign=demo&utm_content=content_tab_settings" target="_blank" style=" pointer-events: all; color:  #EDACFB;">(Demo ⇗)</a>', '3r-elementor-timeline-widget' ),
+				'label'        => __( 'Year / Label (Top) <a href="https://cooltimeline.com/elementor-widget/vertical-timeline-widget-for-elementor/?utm_source=vtwe_plugin&utm_medium=inside&utm_campaign=demo&utm_content=content_tab_settings" target="_blank" style=" pointer-events: all; color:  #EDACFB;">(Demo ⇗)</a>', '3r-elementor-timeline-widget' ),
 				'type'         => \Elementor\Controls_Manager::SWITCHER,
 				'label_on'     => __( 'Show', 'twae' ),
 				'label_off'    => __( 'Hide', 'twae' ),
@@ -416,7 +416,7 @@ class TweTimelineWidget extends Widget_Base {
 				'default' => 'centered',
 				'options' => array(
 					'centered'               => 'Vertical Right / Left (Free)',
-					'one-sided'              => 'Vertical Right Only(Pro)',
+					'one-sided'              => 'Vertical Right Only(Free)',
 					'left-sided'             => 'Vertical Left Only(Pro)',
 					'compact'                => 'Vertical Compact(Pro)',
 					'modern'                    => 'Vertical Tab(Pro)',
@@ -549,7 +549,7 @@ class TweTimelineWidget extends Widget_Base {
 		'label' => __( 'Title Fonts Color', '3r-elementor-timeline-widget' ),
 		'type' => \Elementor\Controls_Manager::COLOR,
 		'selectors' => [
-				'{{WRAPPER}} .tl-heading h4' => 'color: {{VALUE}}',
+				'{{WRAPPER}} .tl-heading .tl-content .be-desc .be-title' => 'color: {{VALUE}}',
 			],
 		'default' => '#333333',
 	]
@@ -588,7 +588,7 @@ class TweTimelineWidget extends Widget_Base {
 		'label' => __( 'Content Fonts Color', '3r-elementor-timeline-widget' ),
 		'type' => \Elementor\Controls_Manager::COLOR,
 		'selectors' => [
-			'{{WRAPPER}} .be-pack .timeline-panel, .be-pack .timeline-panel p' => 'color: {{content_color}}',
+			'{{WRAPPER}} .be-pack .timeline-panel, {{WRAPPER}} .be-pack .timeline-panel p' => 'color: {{content_color}}',
 		],
 		'default' => '#333333',
 	]
@@ -612,41 +612,85 @@ class TweTimelineWidget extends Widget_Base {
 			]
 		);
 
-		$this->add_control(
-			'theme_color', [
-				'label' => __( 'Border Color', '3r-elementor-timeline-widget' ),
-				'type' => \Elementor\Controls_Manager::COLOR,
+			$this->add_control(
+				'theme_color',
+				[
+					'label' => __( 'Border Color', '3r-elementor-timeline-widget' ),
+					'type'  => \Elementor\Controls_Manager::COLOR,
+					'selectors' => [
+
+						'{{WRAPPER}} .timeline li .tl-circ' =>
+							'background: {{theme_color}}; border:5px solid #e6e6e6 !important;',
+
+						'{{WRAPPER}} .timeline li .timeline-panel' =>
+							'border-color: {{theme_color}};',
+
+						'{{WRAPPER}} .timeline:before' =>
+							'background-color: {{theme_color}};',
+
+						'{{WRAPPER}} .timeline li:not(.timeline-inverted) .timeline-panel:before' =>
+							'border-left-color: {{theme_color}};',
+
+						'{{WRAPPER}} .timeline li.timeline-inverted .timeline-panel:before' =>
+							'border-right-color: {{theme_color}};',
+
+						'{{WRAPPER}} .timeline.timeline-one-sided li .timeline-panel:before' =>
+							'border-right-color: {{theme_color}}; border-left-width: 0;',
+					],
+				]
+			);
+
+
+				
+			$this->add_control(
+			'bg_color',
+			[
+				'label' => __( 'Background Color', '3r-elementor-timeline-widget' ),
+				'type'  => \Elementor\Controls_Manager::COLOR,
+				'default' => '#fff',
 				'selectors' => [
-					'{{WRAPPER}} .timeline li .tl-circ' => 'background: {{theme_color}};border:5px solid #e6e6e6 !important',
-					' .timeline li .timeline-panel:before' => 'border-left:15px solid {{theme_color}}; border-right:0px solid {{theme_color}};',
-					' .timeline li .timeline-panel' => 'border:1px solid {{theme_color}};',
-					' .timeline::before' => 'background-color:{{theme_color}};',
+
+					'{{WRAPPER}} .be-pack .timeline-panel' =>
+						'--twe-panel-bg: {{VALUE}}; background-color: {{VALUE}};',
+
+					'{{WRAPPER}} .timeline li:not(.timeline-inverted) .timeline-panel:after' =>
+						'border-left-color: var(--twe-panel-bg);',
+
+					'{{WRAPPER}} .timeline li.timeline-inverted .timeline-panel:after' =>
+						'border-right-color: var(--twe-panel-bg);',
+						
+						'{{WRAPPER}} .timeline.timeline-one-sided li .timeline-panel:after' =>
+                    'border-right-color: var(--twe-panel-bg); border-left-width:0;',
+
 				],
 			]
 		);
-		
+
 		$this->add_control(
-			'bg_color', [
-			'label' => __( 'Background Color', '3r-elementor-timeline-widget' ),
-			'type' => \Elementor\Controls_Manager::COLOR,
+		'circle_color',
+		[
+			'label' => __( 'Icon Background / Connector Color', '3r-elementor-timeline-widget' ),
+			'type'  => \Elementor\Controls_Manager::COLOR,
 			'selectors' => [
-					'{{WRAPPER}} .be-pack .timeline-panel' => 'background-color: {{bg_color}}',
-					'.timeline li .timeline-panel:after' =>'border-left: 14px solid {{bg_color}}; border-right: 0 solid {{bg_color}}'
-				],
-			'default' => '#fff',
+
+				'{{WRAPPER}} .timeline li .tl-circ' =>
+					'background: {{VALUE}};',
+
+				'{{WRAPPER}} .timeline li:not(.timeline-inverted) .timeline-panel:before' =>
+					'border-left-color: {{VALUE}};',
+
+				'{{WRAPPER}} .timeline li.timeline-inverted .timeline-panel:before' =>
+					'border-right-color: {{VALUE}};',
+
+				'{{WRAPPER}} .timeline.timeline-one-sided li .timeline-panel:before' =>
+					'border-right-color: {{VALUE}}; border-left-width:0;',
+			],
 		]
-		);
-		$this->add_control(
-			'circle_color', [
-				'label' => __( 'Circle Border Color', '3r-elementor-timeline-widget' ),
-				'type' => \Elementor\Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .timeline li .tl-circ' => 'background: {{circle_color}};border:5px solid #e6e6e6',
-					' .timeline li .timeline-panel:before' => 'border-left:15px solid {{circle_color}}; border-right:0px solid {{theme_color}};',
-				],
-			]
-		);
-		
+	);
+
+
+
+
 		$this->add_group_control(
 			Group_Control_Box_Shadow::get_type(),
 			[
@@ -663,7 +707,10 @@ class TweTimelineWidget extends Widget_Base {
 				'label_off' => __( 'Right', '3r-elementor-timeline-widget' ),
 				'return_value' => 'left',
 				'default' => 'left',
-                'separator'=>'before'
+                'separator'=>'before',
+				 'condition' => [
+            'twe_layout!' => 'one-sided',
+        ],
 			]
 		);
 	
@@ -729,7 +776,7 @@ class TweTimelineWidget extends Widget_Base {
 				],
 			]
 		);
-	
+
 		$this->end_controls_section();
 
 	}
@@ -745,65 +792,130 @@ class TweTimelineWidget extends Widget_Base {
 	 */
 	protected function render() {
 		$settings = $this->get_settings_for_display();
+		$is_one_sided = ( isset( $settings['twe_layout'] ) && $settings['twe_layout'] === 'one-sided' );
 		$direction = isset($settings['tl_change_direction']) ? $settings['tl_change_direction'] : '';
 		$data	  = $settings['list'];
 		$this->add_render_attribute( 'title', 'class', 'be-title' );
         $direction = in_array($direction, array('left', ''), true) ? $direction : '';
         $count = $direction =='left' ? 1 : 2;
 
-		echo '<ul class="be-pack timeline">';
+		$layout_class = ( isset( $settings['twe_layout'] ) && $settings['twe_layout'] === 'one-sided' )
+			? 'timeline-one-sided'
+			: '';
+
+		echo '<ul class="be-pack timeline ' . esc_attr( $layout_class ) . '">';
+        
+		// echo '<ul class="be-pack timeline">';
+		$count = ( $direction === 'left' ) ? 1 : 0;
 		foreach($data as $index=>$content){
-		
-			$thumbnail_size = $content['thumbnail_size'];
-			$image= wp_get_attachment_image($content['image']['id'], $thumbnail_size, true, array('class' => 'be-image'));
-			
-			if($content['image']['id']!=""){
-				$image =  '<div class="timeline_pic pull-left">'.$image.'</div>';
-				$class='';
-			}else{
-				$image = '';
-				$class= 'd-block';
+		    $title_html = sprintf(
+				'<%1$s %2$s>%3$s</%1$s>',
+				Utils::validate_html_tag( $settings['header_size'] ),
+				$this->get_render_attribute_string( 'title' ),
+				esc_html( $content['list_title'] )
+			);
+
+         $content_html = '<div class="be-content">' . wp_kses_post( $content['list_content'] ) . '</div>';
+		    
+		    $image = '';
+
+			if ( ! empty( $content['image']['id'] ) ) {
+
+				$image_html = Group_Control_Image_Size::get_attachment_image_html(
+					$content,
+					'thumbnail', 
+					'image'
+				);
+
+				if ( $image_html ) {
+					$image = '<div class="timeline_pic pull-left">' . $image_html . '</div>';
+				}
+			} 
+
+
+			else {
+				$class = 'd-block';
 			}
-			$count= $count+1;
-			if($count % 2==0){ ?>
-				<li class="timeline-inverted">
-			<?php }else{?>
-			<li class="timeline-right">
-			<?php } ?> 
+
+			if ( $is_one_sided ) {
+
+				echo '<li class="timeline-right">';
+
+			} else {
+
+				$count++;
+
+				if ( $count % 2 === 0 ) {
+					echo '<li class="timeline-inverted">';
+				} else {
+					echo '<li class="timeline-right">';
+				}
+			}
+
+
+			?> 
 			<div class="tl-circ"></div>
-			  <div class="timeline-panel">
-				<div class="tl-heading">
-					<div class="tl-content">
-						<?php 
+		 <div class="timeline-panel">
+		   <div class="tl-heading">
+			 <div class="tl-content">
+
+			    <?php if ( $is_one_sided ) : ?>
+
+						<div class="be-desc">
+							<?php echo $title_html;  ?>
+						</div>
+
+						<?php
 						echo wp_kses(
 							$image,
-							array(
-								'img' => array(
-									'src'  => array(),
-									'title' => array(),
-									'width' => array(),
-									'height' => array(),
-									'class' => array(),
-								),
-								'div'     => array(
-									'class' => array(),
-								),
-							)
-						); 
+							[
+								'img' => [
+									'src'    => [],
+									'title'  => [],
+									'width'  => [],
+									'height' => [],
+									'class'  => [],
+								],
+								'div' => [
+									'class' => [],
+								],
+							]
+						);
 						?>
+
+						<?php echo $content_html; ?>
+
+			     <?php else : ?>
+
+						<?php
+						echo wp_kses(
+							$image,
+							[
+								'img' => [
+									'src'    => [],
+									'title'  => [],
+									'width'  => [],
+									'height' => [],
+									'class'  => [],
+								],
+								'div' => [
+									'class' => [],
+								],
+							]
+						);
+						?>
+
 						<div class="be-desc">
-						<?php 
-						$title_html = sprintf( '<%1$s %2$s>%3$s</%1$s>', Utils::validate_html_tag( $settings['header_size'] ), $this->get_render_attribute_string( 'title' ) ,esc_html( $content['list_title'] ));
-						// PHPCS - the variable $title_html holds safe data.
-						echo $title_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-						?>
-						<div class="be-content">
-							<?php echo wp_kses_post($content['list_content']);?> 
+							<?php echo $title_html;  ?>
+							<?php echo $content_html;  ?>
 						</div>
-						</div>
-					</div>
+
+					<?php endif; ?>
+
 				</div>
-			  </div>
+
+			</div>
+		</div>
 			</li>
 			<?php } ?> 
       </ul>

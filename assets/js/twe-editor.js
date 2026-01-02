@@ -21,12 +21,20 @@ jQuery(document).on('click', '.twae_hide_upgrade_notice_editor', function () {
 
 
 jQuery(document).on('focus', 'select[data-setting="twe_layout"]', function () {
-    
-    const $select = jQuery(this);
-    $select.val('centered');
-    $select.find('option:not([value="centered"])').prop('disabled', true);
-});
 
+    const $select = jQuery(this);
+
+    const allowedValues = ['centered', 'one-sided'];
+
+    if (!allowedValues.includes($select.val())) {
+        $select.val('centered');
+    }
+
+    $select.find('option').each(function () {
+        const val = jQuery(this).val();
+        jQuery(this).prop('disabled', !allowedValues.includes(val));
+    });
+});
 
 
 
