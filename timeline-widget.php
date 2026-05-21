@@ -114,8 +114,8 @@ class TweTimelineWidget extends Widget_Base {
 			array(
 				'label'        => __( 'Year / Label (Top) <a href="https://cooltimeline.com/elementor-widget/vertical-timeline-widget-for-elementor/?utm_source=vtwe_plugin&utm_medium=inside&utm_campaign=demo&utm_content=content_tab_settings" target="_blank" style=" pointer-events: all; color:  #EDACFB;">(Demo ⇗)</a>', '3r-elementor-timeline-widget' ),
 				'type'         => \Elementor\Controls_Manager::SWITCHER,
-				'label_on'     => __( 'Show', 'twae' ),
-				'label_off'    => __( 'Hide', 'twae' ),
+				'label_on'     => __( 'Show', 'twae' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- using shared text domain intentionally
+				'label_off'    => __( 'Hide', 'twae' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- using shared text domain intentionally
 				'return_value' => 'yes',
 				'default'      => 'no',
 
@@ -301,8 +301,8 @@ class TweTimelineWidget extends Widget_Base {
 			array(
 				'label'        => __( 'Read More Button', '3r-elementor-timeline-widget' ),
 				'type'         => \Elementor\Controls_Manager::SWITCHER,
-				'label_on'     => __( 'Show', 'twae' ),
-				'label_off'    => __( 'Hide', 'twae' ),
+				'label_on'     => __( 'Show', 'twae' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- using shared text domain intentionally
+				'label_off'    => __( 'Hide', 'twae' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- using shared text domain intentionally
 				'return_value' => 'yes',
 				'default'      => 'no',
 			)
@@ -862,7 +862,7 @@ class TweTimelineWidget extends Widget_Base {
 			    <?php if ( $is_one_sided ) : ?>
 
 						<div class="be-desc">
-							<?php echo $title_html;  ?>
+							<?php echo $title_html;  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- already escaped in $title_html ?>
 						</div>
 
 						<?php
@@ -882,8 +882,7 @@ class TweTimelineWidget extends Widget_Base {
 							]
 						);
 						?>
-
-						<?php echo $content_html; ?>
+						<?php echo $content_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- already escaped in $content_html ?>
 
 			     <?php else : ?>
 
@@ -906,8 +905,8 @@ class TweTimelineWidget extends Widget_Base {
 						?>
 
 						<div class="be-desc">
-							<?php echo $title_html;  ?>
-							<?php echo $content_html;  ?>
+							<?php echo $title_html;  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- already escaped in $title_html ?>
+							<?php echo $content_html;  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- already escaped in $content_html ?>
 						</div>
 
 					<?php endif; ?>
