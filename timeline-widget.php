@@ -112,7 +112,7 @@ class TweTimelineWidget extends Widget_Base {
 		$repeater->add_control(
 			'twe_show_year_label',
 			array(
-				'label'        => __( 'Year / Label (Top) <a href="https://cooltimeline.com/elementor-widget/vertical-timeline-widget-for-elementor/?utm_source=vtwe_plugin&utm_medium=inside&utm_campaign=demo&utm_content=content_tab_settings" target="_blank" style=" pointer-events: all; color:  #EDACFB;">(Demo ⇗)</a>', '3r-elementor-timeline-widget' ),
+				'label'        => __( 'Year / Label (Top) <a href="https://cooltimeline.com/elementor-widget/vertical-timeline-widget-for-elementor/?utm_source=vtwe_plugin&utm_medium=inside&utm_campaign=demo&utm_content=content_tab_settings" target="_blank" rel="noopener noreferrer" style=" pointer-events: all; color:  #EDACFB;">(Demo ⇗)</a>', '3r-elementor-timeline-widget' ),
 				'type'         => \Elementor\Controls_Manager::SWITCHER,
 				'label_on'     => __( 'Show', 'twae' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- using shared text domain intentionally
 				'label_off'    => __( 'Hide', 'twae' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- using shared text domain intentionally
