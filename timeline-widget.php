@@ -325,7 +325,7 @@ class TweTimelineWidget extends Widget_Base {
 						'list_content' => __( 'Item content. Click the edit button to change this text.', '3r-elementor-timeline-widget' ),
 					],
 				],
-				'title_field' => '{{{ list_title }}}',
+				'title_field' => '{{{ elementor.helpers.sanitize( list_title ) }}}',
 			]
 		);
           
