@@ -110,7 +110,7 @@ add_action( 'wp_ajax_twae_hide_upgrade_notice_editor', 'twae_hide_upgrade_notice
 
 function twae_hide_upgrade_notice_editor_callback() {
 
-    if ( ! current_user_can( 'edit_posts' ) ) { wp_send_json_error( [ 'message' => 'Forbidden' ], 403 ); }
+    if ( ! current_user_can( 'manage_options' ) ) { wp_send_json_error( [ 'message' => __('Forbidden', '3r-elementor-timeline-widget' ) ], 403 ); }
 
     check_ajax_referer( 'twae_upgrade_notice_nonce', 'security' );
       
