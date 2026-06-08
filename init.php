@@ -17,7 +17,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-if(!defined( 'TWE_VERSION' )){define( 'TWE_VERSION', '2.7.3' );}
+if(!defined( 'TWAE_VERSION' )){define( 'TWAE_VERSION', '2.7.3' );}
 define( 'TWE_PLUGIN_URL', plugins_url( '/', __FILE__ ) );
 define( 'TWE_PLUGIN_PATH', plugin_dir_path(__FILE__));
 add_action( 'elementor/preview/enqueue_styles', 'twe_enqueue_style' );
@@ -31,8 +31,8 @@ add_action( 'elementor/editor/after_enqueue_styles', function() {
         [],
           TWAE_VERSION
     );
-    wp_enqueue_style( 'font-awesome-5-solid', ELEMENTOR_ASSETS_URL . 'lib/font-awesome/css/solid.min.css',array(), 'all' );
-    wp_enqueue_style( 'font-awesome-5-fontawesome', ELEMENTOR_ASSETS_URL . 'lib/font-awesome/css/fontawesome.min.css',array(), 'all' );
+    wp_enqueue_style( 'font-awesome-5-solid', ELEMENTOR_ASSETS_URL . 'lib/font-awesome/css/solid.min.css',array(),TWAE_VERSION, 'all' );
+    wp_enqueue_style( 'font-awesome-5-fontawesome', ELEMENTOR_ASSETS_URL . 'lib/font-awesome/css/fontawesome.min.css',array(),TWAE_VERSION, 'all' );
 
 
 });
