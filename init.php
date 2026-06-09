@@ -22,7 +22,10 @@ define( 'TWE_PLUGIN_URL', plugins_url( '/', __FILE__ ) );
 define( 'TWE_PLUGIN_PATH', plugin_dir_path(__FILE__));
 add_action( 'elementor/preview/enqueue_styles', 'twe_enqueue_style' );
 add_action('wp_enqueue_scripts', 'twe_enqueue_style');
-add_action( 'elementor/editor/after_enqueue_styles', function() {
+add_action( 'elementor/editor/after_enqueue_styles','twe_enqueue_editor_style' );
+add_action('elementor/editor/after_enqueue_scripts','twe_enqueue_editor_script');
+
+function twe_enqueue_editor_style() {
 
     // Load your custom editor CSS
     wp_enqueue_style(
@@ -35,8 +38,8 @@ add_action( 'elementor/editor/after_enqueue_styles', function() {
     wp_enqueue_style( 'font-awesome-5-fontawesome', ELEMENTOR_ASSETS_URL . 'lib/font-awesome/css/fontawesome.min.css',array(),TWE_VAR, 'all' );
 
 
-});
-add_action('elementor/editor/after_enqueue_scripts', function() {
+};
+function twe_enqueue_editor_script()  {
     wp_enqueue_script(
         'twae-editor-js',
         TWE_PLUGIN_URL . 'assets/js/twe-editor.js',
@@ -53,7 +56,7 @@ add_action('elementor/editor/after_enqueue_scripts', function() {
             'nonce'    => wp_create_nonce('twae_upgrade_notice_nonce'),
         ]
     );
-});
+};
 
 /**
  * Enqueue editor styles.
