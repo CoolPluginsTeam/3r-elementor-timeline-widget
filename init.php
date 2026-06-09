@@ -17,7 +17,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-if(!defined( 'TWE_VAR' )){define( 'TWE_VAR', '2.7.3' );}
+if( !defined( 'TWE_VAR' ) ){ define( 'TWE_VAR', '2.7.3' ); }
 define( 'TWE_PLUGIN_URL', plugins_url( '/', __FILE__ ) );
 define( 'TWE_PLUGIN_PATH', plugin_dir_path(__FILE__));
 add_action( 'elementor/preview/enqueue_styles', 'twe_enqueue_style' );
