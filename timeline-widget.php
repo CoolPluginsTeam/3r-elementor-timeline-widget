@@ -816,7 +816,7 @@ class TweTimelineWidget extends Widget_Base {
 		foreach($data as $index=>$content){
 		    $title_html = sprintf(
 				'<%1$s %2$s>%3$s</%1$s>',
-				Utils::validate_html_tag( $settings['header_size'] ),
+				Utils::validate_html_tag( isset($settings['header_size']) ? $settings['header_size'] : 'h2' ),
 				$this->get_render_attribute_string( 'title' ),
 				esc_html( $content['list_title'] )
 			);
