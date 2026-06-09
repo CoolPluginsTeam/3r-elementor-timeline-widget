@@ -324,6 +324,10 @@ class TweTimelineWidget extends Widget_Base {
 						'list_title' => __( 'Timeline', '3r-elementor-timeline-widget' ),
 						'list_content' => __( 'Item content. Click the edit button to change this text.', '3r-elementor-timeline-widget' ),
 					],
+					[
+						'list_title' => __( 'Timeline', '3r-elementor-timeline-widget' ),
+						'list_content' => __( 'Item content. Click the edit button to change this text.', '3r-elementor-timeline-widget' ),
+					],
 				],
 				'title_field' => '{{{ elementor.helpers.sanitize( list_title ) }}}',
 			]
@@ -794,7 +798,7 @@ class TweTimelineWidget extends Widget_Base {
 		$settings = $this->get_settings_for_display();
 		$is_one_sided = ( isset( $settings['twe_layout'] ) && $settings['twe_layout'] === 'one-sided' );
 		$direction = isset($settings['tl_change_direction']) ? $settings['tl_change_direction'] : '';
-		$data	  = $settings['list'];
+		$data	  = !empty($settings['list']) && is_array($settings['list']) ? $settings['list'] : [];
 		$this->add_render_attribute( 'title', 'class', 'be-title' );
         $direction = in_array($direction, array('left', ''), true) ? $direction : '';
         $count = $direction =='left' ? 1 : 2;
@@ -807,6 +811,9 @@ class TweTimelineWidget extends Widget_Base {
         
 		// echo '<ul class="be-pack timeline">';
 		$count = ( $direction === 'left' ) ? 1 : 0;
+		if ( empty( $data ) ) {
+			echo '</ul>'; return;
+		}
 		foreach($data as $index=>$content){
 		    $title_html = sprintf(
 				'<%1$s %2$s>%3$s</%1$s>',
