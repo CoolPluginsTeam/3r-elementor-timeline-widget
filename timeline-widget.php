@@ -923,4 +923,4 @@ class TweTimelineWidget extends Widget_Base {
 
 
 }
-\Elementor\Plugin::instance()->widgets_manager->register_widget_type( new TweTimelineWidget() );
+\Elementor\Plugin::instance()->widgets_manager->register( new TweTimelineWidget() );
