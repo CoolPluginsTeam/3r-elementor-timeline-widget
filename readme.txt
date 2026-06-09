@@ -70,7 +70,7 @@ Yes. Vertical Timeline Widget for Elementor works perfectly with the free versio
 =Can I display timelines on both sides?=
 Yes. You can choose between a one-sided vertical layout or a both-sided layout for your timeline story.
 
-=Can I add images/videos/slideshows to timeline stories?
+=Can I add images/videos/slideshows to timeline stories?=
 Yes, you can add images to each timeline story, but to add videos and slideshows, you'll need to upgrade to Timeline Widget Pro for Elementor.
 
 =Will my timeline data be lost after upgrading?=

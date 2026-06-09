@@ -57,7 +57,7 @@ add_action('elementor/editor/after_enqueue_scripts', function() {
 
 
 function twe_enqueue_style() {
-	wp_enqueue_style( 'twe-preview', TWE_PLUGIN_URL . 'assets/css/style.css', array() ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion -- version intentionally omitted
+	wp_enqueue_style( 'twe-preview', TWE_PLUGIN_URL . 'assets/css/style.css', array(), TWAE_VERSION  ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion -- version intentionally omitted
 }
 
 
