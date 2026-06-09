@@ -55,6 +55,13 @@ add_action('elementor/editor/after_enqueue_scripts', function() {
     );
 });
 
+/**
+ * Enqueue editor styles.
+ *
+ * @since 1.0.0
+ *
+ * @return void
+ */
 
 function twe_enqueue_style() {
 	wp_enqueue_style( 'twe-preview', TWE_PLUGIN_URL . 'assets/css/style.css', array(),   TWE_VAR); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion -- version intentionally omitted
@@ -90,11 +97,25 @@ class TweTimelinePlugin {
 TweTimelinePlugin::get_instance()->init();
 
 add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), 'twe_add_pro_link' );
+
+/**
+ * function add pro link.
+ *
+ * @return links
+ */
+
 function twe_add_pro_link( $links ) {
     $links[] = '<a style="font-weight:bold; color:#852636;" href="https://cooltimeline.com/plugin/elementor-timeline-widget-pro/?utm_source=vtwe_plugin&utm_medium=inside&utm_campaign=get_pro&utm_content=plugins_list#pricing" target="_blank" rel="noopener noreferrer">Get Pro</a>';
     return $links;
 }
 add_filter( 'plugin_row_meta', 'twe_add_view_demo_row_meta', 10, 2 );
+
+/**
+ * function add view demo link.
+ *
+ * @return links
+ */
+
 function twe_add_view_demo_row_meta( $links, $file ) {
     if ( $file === plugin_basename( __FILE__ ) ) {
         $demo_link = '<a href="https://cooltimeline.com/elementor-widget/vertical-timeline-widget-for-elementor/?utm_source=vtwe_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins_list" target="_blank">View Demo</a>';
