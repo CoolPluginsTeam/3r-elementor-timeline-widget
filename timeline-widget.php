@@ -20,7 +20,7 @@ use Elementor\Scheme_Typography;
 use Elementor\Scheme_Color;
 use Elementor\Group_Control_Text_Shadow;
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly
 class TweTimelineWidget extends Widget_Base {
 	/**
 	 * Get widget name.

@@ -15,7 +15,7 @@
  * Requires Plugins: elementor
  */
 
-if ( ! defined( 'ABSPATH' ) ) exit;
+if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 if( !defined( 'TWE_VAR' ) ){ define( 'TWE_VAR', '2.7.3' ); }
 define( 'TWE_PLUGIN_URL', plugins_url( '/', __FILE__ ) );
@@ -138,6 +138,7 @@ function twae_hide_upgrade_notice_editor_callback() {
     check_ajax_referer( 'twae_upgrade_notice_nonce', 'security' );
     
     if ( ! current_user_can( 'manage_options' ) ) { wp_send_json_error( [ 'message' => __('Forbidden', '3r-elementor-timeline-widget' ) ], 403 ); }
+
     update_option( 'twae_hide_upgrade_notice_editor', 'yes' );
 
     wp_send_json_success([
