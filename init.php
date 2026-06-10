@@ -59,7 +59,7 @@ function twe_enqueue_editor_script()  {
 };
 
 /**
- * Enqueue editor styles.
+ * Enqueue frontend styles.
  *
  * @since 1.0.0
  *
