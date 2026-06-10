@@ -4,7 +4,7 @@
  * Plugin Name: Vertical Timeline Widget for Elementor
  * Description: Vertical Timeline Widget for Elementor Plugin add timeline element to Elementor Page builder.
  * Plugin URI: https://wordpress.org/plugins/3r-elementor-timeline-widget
- * Version:2.7.3
+ * Version:2.7.4
  * Requires at least: 5.2
  * Requires PHP:7.2
  * Author: Cool Plugins
@@ -17,7 +17,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-if( !defined( 'TWE_VERSION' ) ){ define( 'TWE_VERSION', '2.7.3' ); }
+if( !defined( 'TWE_VERSION' ) ){ define( 'TWE_VERSION', '2.7.4' ); }
 define( 'TWE_PLUGIN_URL', plugins_url( '/', __FILE__ ) );
 define( 'TWE_PLUGIN_PATH', plugin_dir_path(__FILE__));
 add_action( 'elementor/preview/enqueue_styles', 'twe_enqueue_style' );
