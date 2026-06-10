@@ -59,7 +59,7 @@ function twe_enqueue_editor_script()  {
 };
 
 /**
- * Enqueue editor styles.
+ * Enqueue frontend styles.
  *
  * @since 1.0.0
  *
@@ -67,7 +67,7 @@ function twe_enqueue_editor_script()  {
  */
 
 function twe_enqueue_style() {
-	wp_enqueue_style( 'twe-preview', TWE_PLUGIN_URL . 'assets/css/style.css', array(),   TWE_VAR); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion -- version intentionally omitted
+	wp_enqueue_style( 'twe-preview', TWE_PLUGIN_URL . 'assets/css/style.css', array(),   TWE_VAR);
 }
 
 
