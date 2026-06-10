@@ -86,11 +86,11 @@ You can report security bugs through the Patchstack Vulnerability Disclosure Pro
 
 = Version 2.7.4 | 10 June 2026 =
 * Improved: Code Improvements & Optimization.
-* **Tested up to Elementor Pro 4.1.2.
+* Tested up to Elementor Pro 4.1.2.
 
 = Version 2.7.3 | 1 April 2026 =
-* **Tested up to Elementor  4.0.0.
-* **Tested up to Elementor Pro 4.0.0.
+* Tested up to Elementor  4.0.0.
+* Tested up to Elementor Pro 4.0.0.
 
 = Version 2.7.2 | 29 January 2026 =
 * **Fixed:** Issues reported by “Plugin Check” plugin.
