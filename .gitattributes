@@ -40,10 +40,8 @@ node_modules/           export-ignore
 *.sql                   export-ignore
 *.tar.gz                export-ignore
 *.zip                   export-ignore
-/src/                   export-ignore
 postcss.config.js       export-ignore
 .vscode                 export-ignore
-.github/ export-ignore
-.claude/ export-ignore
-.cursor/ export-ignore
-.codex/ export-ignore
+.claude export-ignore
+.cursor export-ignore
+.codex export-ignore

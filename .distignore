@@ -44,7 +44,6 @@ node_modules
 postcss.config.js
 .wordpress-org
 .vscode
-.github/
-.claude/
-.cursor/
-.codex/
+.claude
+.cursor
+.codex
