@@ -121,7 +121,7 @@ add_filter( 'plugin_row_meta', 'twe_add_view_demo_row_meta', 10, 2 );
 
 function twe_add_view_demo_row_meta( $links, $file ) {
     if ( $file === plugin_basename( __FILE__ ) ) {
-        $demo_link = '<a href="https://cooltimeline.com/elementor-widget/vertical-timeline-widget-for-elementor/?utm_source=vtwe_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins_list" target="_blank">View Demo</a>';
+        $demo_link = '<a href="https://cooltimeline.com/elementor-widget/vertical-timeline-widget-for-elementor/?utm_source=vtwe_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins_list" target="_blank" rel="noopener noreferrer>View Demo</a>';
         array_splice( $links, count( $links ), 0, $demo_link );
     }
     return $links;
