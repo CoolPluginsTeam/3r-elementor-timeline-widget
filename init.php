@@ -38,7 +38,7 @@ function twe_enqueue_editor_style() {
     wp_enqueue_style( 'font-awesome-5-fontawesome', ELEMENTOR_ASSETS_URL . 'lib/font-awesome/css/fontawesome.min.css',array(),TWE_VAR, 'all' );
 
 
-};
+}
 function twe_enqueue_editor_script()  {
     wp_enqueue_script(
         'twae-editor-js',
@@ -56,7 +56,7 @@ function twe_enqueue_editor_script()  {
             'nonce'    => wp_create_nonce('twae_upgrade_notice_nonce'),
         ]
     );
-};
+}
 
 /**
  * Enqueue frontend styles.
