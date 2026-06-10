@@ -50,3 +50,6 @@ Thumbs.db
 *.vscode
 fix-issues-files.txt
 fix-issues.csv
+.claude/
+.codex/
+.cursor/

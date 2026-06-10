@@ -17,7 +17,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-if( !defined( 'TWE_VAR' ) ){ define( 'TWE_VAR', '2.7.3' ); }
+if( !defined( 'TWE_VERSION' ) ){ define( 'TWE_VERSION', '2.7.3' ); }
 define( 'TWE_PLUGIN_URL', plugins_url( '/', __FILE__ ) );
 define( 'TWE_PLUGIN_PATH', plugin_dir_path(__FILE__));
 add_action( 'elementor/preview/enqueue_styles', 'twe_enqueue_style' );
@@ -32,10 +32,10 @@ function twe_enqueue_editor_style() {
         'twe-editor-styles',
         TWE_PLUGIN_URL . 'assets/css/twe-editor.css',
         [],
-          TWE_VAR
+          TWE_VERSION
     );
-    wp_enqueue_style( 'font-awesome-5-solid', ELEMENTOR_ASSETS_URL . 'lib/font-awesome/css/solid.min.css',array(),TWE_VAR, 'all' );
-    wp_enqueue_style( 'font-awesome-5-fontawesome', ELEMENTOR_ASSETS_URL . 'lib/font-awesome/css/fontawesome.min.css',array(),TWE_VAR, 'all' );
+    wp_enqueue_style( 'font-awesome-5-solid', ELEMENTOR_ASSETS_URL . 'lib/font-awesome/css/solid.min.css',array(),TWE_VERSION, 'all' );
+    wp_enqueue_style( 'font-awesome-5-fontawesome', ELEMENTOR_ASSETS_URL . 'lib/font-awesome/css/fontawesome.min.css',array(),TWE_VERSION, 'all' );
 
 
 }
@@ -44,7 +44,7 @@ function twe_enqueue_editor_script()  {
         'twae-editor-js',
         TWE_PLUGIN_URL . 'assets/js/twe-editor.js',
         ['jquery'],
-        TWE_VAR,
+        TWE_VERSION,
         true
     );
 
@@ -67,7 +67,7 @@ function twe_enqueue_editor_script()  {
  */
 
 function twe_enqueue_style() {
-	wp_enqueue_style( 'twe-preview', TWE_PLUGIN_URL . 'assets/css/style.css', array(),   TWE_VAR);
+	wp_enqueue_style( 'twe-preview', TWE_PLUGIN_URL . 'assets/css/style.css', array(),   TWE_VERSION);
 }
 
 

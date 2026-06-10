@@ -1,7 +1,6 @@
 {
   "permissions": {
     "deny": [
-      "Read(./.gitattributes)",
       "Read(./.github/**)",
       "Read(./.vscode/**)",
       "Read(./.idea/**)",
