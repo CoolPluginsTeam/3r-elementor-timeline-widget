@@ -625,7 +625,7 @@ class TweTimelineWidget extends Widget_Base {
 					'selectors' => [
 
 						'{{WRAPPER}} .timeline li .tl-circ' =>
-							'background: {{theme_color}}; border:5px solid #e6e6e6 !important;',
+							'background: {{VALUE}}; border:5px solid #e6e6e6 !important;',
 
 						'{{WRAPPER}} .timeline li .timeline-panel' =>
 							'border-color: {{theme_color}};',
