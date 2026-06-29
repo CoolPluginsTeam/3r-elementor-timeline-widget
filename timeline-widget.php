@@ -118,7 +118,12 @@ class TweTimelineWidget extends Widget_Base {
 		$repeater->add_control(
 			'twe_show_year_label',
 			array(
-				'label'        => __( 'Year / Label (Top) <a href="' . esc_url( 'https://cooltimeline.com/elementor-widget/vertical-timeline-widget-for-elementor/?utm_source=vtwe_plugin&utm_medium=inside&utm_campaign=demo&utm_content=content_tab_settings' ) . '" target="_blank" rel="noopener noreferrer" style=" pointer-events: all; color:  #EDACFB;">(Demo ⇗)</a>', '3r-elementor-timeline-widget' ),
+'label' => sprintf(
+	'%s <a href="%s" target="_blank" rel="noopener noreferrer" style="pointer-events: all; color: #EDACFB;">%s</a>',
+	esc_html__( 'Year / Label (Top)', '3r-elementor-timeline-widget' ),
+	esc_url( 'https://cooltimeline.com/elementor-widget/vertical-timeline-widget-for-elementor/?utm_source=vtwe_plugin&utm_medium=inside&utm_campaign=demo&utm_content=content_tab_settings' ),
+	esc_html__( '(Demo ⇗)', '3r-elementor-timeline-widget' )
+),
 				'type'         => \Elementor\Controls_Manager::SWITCHER,
 				'label_on'     => __( 'Show', 'twae' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- using shared text domain intentionally
 				'label_off'    => __( 'Hide', 'twae' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- using shared text domain intentionally
@@ -425,13 +430,13 @@ class TweTimelineWidget extends Widget_Base {
 				'type'    => \Elementor\Controls_Manager::SELECT,
 				'default' => 'centered',
 				'options' => array(
-					'centered'               => 'Vertical Right / Left (Free)',
-					'one-sided'              => 'Vertical Right Only(Free)',
-					'left-sided'             => 'Vertical Left Only(Pro)',
-					'compact'                => 'Vertical Compact(Pro)',
-					'modern'                    => 'Vertical Tab(Pro)',
-					'horizontal'             => 'Horizontal Top(Pro)',
-					'horizontal-bottom'      => 'Horizontal Bottom(Pro)',
+					'centered'               => esc_html__( 'Vertical Right / Left (Free)', '3r-elementor-timeline-widget' ),
+					'one-sided'              => esc_html__( 'Vertical Right Only(Free)', '3r-elementor-timeline-widget' ),
+					'left-sided'             => esc_html__( 'Vertical Left Only(Pro)', '3r-elementor-timeline-widget' ),
+					'compact'                => esc_html__( 'Vertical Compact(Pro)', '3r-elementor-timeline-widget' ),
+					'modern'                    => esc_html__( 'Vertical Tab(Pro)', '3r-elementor-timeline-widget' ),
+					'horizontal'             => esc_html__( 'Horizontal Top(Pro)', '3r-elementor-timeline-widget' ),
+					'horizontal-bottom'      => esc_html__( 'Horizontal Bottom(Pro)', '3r-elementor-timeline-widget' ),
 					'horizontal-highlighted' => 'Horizontal Highlighted(Pro)',
 				),
 			)
@@ -568,7 +573,7 @@ class TweTimelineWidget extends Widget_Base {
     $this->add_group_control(
 		Group_Control_Typography::get_type(),
 		[
-			'label' => 'Title Typography',
+			'label' => esc_html__( 'Title Typography', '3r-elementor-timeline-widget' ),
 			'name' => 'tile_typography',
 			'selector' => '{{WRAPPER}} .be-pack .tl-heading .be-title',
 		]
