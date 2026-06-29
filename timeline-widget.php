@@ -511,7 +511,7 @@ class TweTimelineWidget extends Widget_Base {
 					'raw'  => '
 						<div class="twe-upgrade-button-notice-layout-section">
 							<a href="https://cooltimeline.com/plugin/elementor-timeline-widget-pro/?utm_source=vtwe_plugin&utm_medium=inside&utm_campaign=get_pro&utm_content=layout_tab_settings#pricing" 
-							target="_blank" 
+							target="_blank" rel="noopener noreferrer"
 							class="twae-upgrade-link">
 								UPGRADE TO PRO 💎
 							</a>
