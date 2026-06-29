@@ -823,7 +823,7 @@ class TweTimelineWidget extends Widget_Base {
 				'<%1$s %2$s>%3$s</%1$s>',
 				Utils::validate_html_tag( isset($settings['header_size']) ? $settings['header_size'] : 'h2' ),
 				$this->get_render_attribute_string( 'title' ),
-				esc_html( $content['list_title'] )
+				isset($content['list_title']) ? esc_html( $content['list_title'] ) : ''
 			);
 
          $content_html = '<div class="be-content">' . wp_kses_post( $content['list_content'] ) . '</div>';
