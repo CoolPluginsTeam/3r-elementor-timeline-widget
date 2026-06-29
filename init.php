@@ -66,8 +66,13 @@ function twe_enqueue_editor_script()  {
  * @return void
  */
 
-function twe_enqueue_style() {
-	wp_enqueue_style( 'twe-preview', TWE_PLUGIN_URL . 'assets/css/style.css', array(),   TWE_VERSION);
+ function twe_enqueue_style() {
+	wp_register_style(
+		'twe-preview',
+		TWE_PLUGIN_URL . 'assets/css/style.css',
+		array(),
+		TWE_VERSION
+	);
 }
 
 

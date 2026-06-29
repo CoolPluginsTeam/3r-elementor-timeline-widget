@@ -86,6 +86,11 @@ class TweTimelineWidget extends Widget_Base {
 	 * @since 1.0.0
 	 * @access protected
 	 */
+
+	 public function get_style_depends() {
+		return array( 'twe-preview' );
+	}
+
 	protected function register_controls() {
 
 		$this->start_controls_section(
