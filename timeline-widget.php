@@ -807,17 +807,15 @@ class TweTimelineWidget extends Widget_Base {
 	 */
 	protected function render() {
 		$settings = $this->get_settings_for_display();
-		$is_one_sided = ( isset( $settings['twe_layout'] ) && $settings['twe_layout'] === 'one-sided' );
+		$is_one_sided = ( isset( $settings['twe_layout'] ) && $settings['twe_layout'] === 'one-sided' ) ? 'timeline-one-sided'
+		: '';;
 		$direction = isset($settings['tl_change_direction']) ? $settings['tl_change_direction'] : '';
 		$data	  = !empty($settings['list']) && is_array($settings['list']) ? $settings['list'] : [];
 		$this->add_render_attribute( 'title', 'class', 'be-title' );
         $direction = in_array($direction, array('left', ''), true) ? $direction : '';
+			
 
-		$layout_class = ( isset( $settings['twe_layout'] ) && $settings['twe_layout'] === 'one-sided' )
-			? 'timeline-one-sided'
-			: '';
-
-		echo '<ul class="be-pack timeline ' . esc_attr( $layout_class ) . '">';
+		echo '<ul class="be-pack timeline ' . esc_attr( $is_one_sided ) . '">';
         
 		$count = ( $direction === 'left' ) ? 1 : 0;
 		if ( empty( $data ) ) {
