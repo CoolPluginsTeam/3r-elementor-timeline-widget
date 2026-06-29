@@ -849,10 +849,6 @@ class TweTimelineWidget extends Widget_Base {
 			} 
 
 
-			else {
-				$class = 'd-block';
-			}
-
 			if ( $is_one_sided ) {
 
 				echo '<li class="timeline-right">';
