@@ -113,8 +113,7 @@ add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), 'twe_add_pro_lin
  */
 
 function twe_add_pro_link( $links ) {
-    $links[] = '<a style="font-weight:bold; color:#852636;" href="https://cooltimeline.com/plugin/elementor-timeline-widget-pro/?utm_source=vtwe_plugin&utm_medium=inside&utm_campaign=get_pro&utm_content=plugins_list#pricing" target="_blank" rel="noopener noreferrer">Get Pro</a>';
-    return $links;
+    $links[] = '<a style="font-weight:bold; color:#852636;" href="' . esc_url( 'https://cooltimeline.com/plugin/elementor-timeline-widget-pro/?utm_source=vtwe_plugin&utm_medium=inside&utm_campaign=get_pro&utm_content=plugins_list#pricing' ) . '" target="_blank" rel="noopener noreferrer">' . esc_html__( 'Get Pro', 'twae' ) . '</a>';    return $links;
 }
 add_filter( 'plugin_row_meta', 'twe_add_view_demo_row_meta', 10, 2 );
 
@@ -126,8 +125,7 @@ add_filter( 'plugin_row_meta', 'twe_add_view_demo_row_meta', 10, 2 );
 
 function twe_add_view_demo_row_meta( $links, $file ) {
     if ( $file === plugin_basename( __FILE__ ) ) {
-        $demo_link = '<a href="https://cooltimeline.com/elementor-widget/vertical-timeline-widget-for-elementor/?utm_source=vtwe_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins_list" target="_blank" rel="noopener noreferrer">View Demo</a>';
-        array_splice( $links, count( $links ), 0, $demo_link );
+        $demo_link = '<a href="' . esc_url( 'https://cooltimeline.com/elementor-widget/vertical-timeline-widget-for-elementor/?utm_source=vtwe_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins_list' ) . '" target="_blank" rel="noopener noreferrer">' . esc_html__( 'View Demo', 'twae' ) . '</a>';        array_splice( $links, count( $links ), 0, $demo_link );
     }
     return $links;
 }
