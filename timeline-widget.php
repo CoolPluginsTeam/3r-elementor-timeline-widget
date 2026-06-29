@@ -831,7 +831,7 @@ class TweTimelineWidget extends Widget_Base {
 				isset($content['list_title']) ? esc_html( $content['list_title'] ) : ''
 			);
 
-         $content_html = '<div class="be-content">' .isset($content['list_content']) ? wp_kses_post( $content['list_content'] ) : '' . '</div>';
+         $content_html = '<div class="be-content">' .(!empty($content['list_content']) ? wp_kses_post( $content['list_content'] ) : '') . '</div>';
 		    
 		    $image = '';
 
