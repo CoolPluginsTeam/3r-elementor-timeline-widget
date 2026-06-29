@@ -350,7 +350,7 @@ class TweTimelineWidget extends Widget_Base {
 									<i class="eicon-close"></i>
 								</button>
 								<div class="elementor-control-notice-icon">
-									<img class="twae-highlight-icon" src="'.esc_url( TWE_PLUGIN_URL . 'assets/images/twae-highlight-icon.svg' ).'" width="250" alt="Highlight Icon" style="filter: brightness(0) saturate(100%) invert(32%) sepia(84%) saturate(627%) hue-rotate(190deg) brightness(92%) contrast(92%);" />
+									<img class="twae-highlight-icon" src="'.esc_url( TWE_PLUGIN_URL . 'assets/images/twae-highlight-icon.svg' ).'" width="250" alt="' . esc_attr__( 'Highlight Icon', '3r-elementor-timeline-widget' ) . '" style="filter: brightness(0) saturate(100%) invert(32%) sepia(84%) saturate(627%) hue-rotate(190deg) brightness(92%) contrast(92%);" />
 								</div>
 								<div class="elementor-control-notice-main">
 									<div class="elementor-control-notice-main-content">
@@ -385,7 +385,7 @@ class TweTimelineWidget extends Widget_Base {
 									<i class="eicon-close"></i>
 								</button>
 								<div class="elementor-control-notice-icon">
-									<img class="twae-highlight-icon" src="'.esc_url( TWE_PLUGIN_URL . 'assets/images/twae-highlight-icon.svg' ).'" width="250" alt="Highlight Icon" style="filter: brightness(0) saturate(100%) invert(32%) sepia(84%) saturate(627%) hue-rotate(190deg) brightness(92%) contrast(92%);" />
+									<img class="twae-highlight-icon" src="'.esc_url( TWE_PLUGIN_URL . 'assets/images/twae-highlight-icon.svg' ).'" width="250" alt="' . esc_attr__( 'Highlight Icon', '3r-elementor-timeline-widget' ) . '" style="filter: brightness(0) saturate(100%) invert(32%) sepia(84%) saturate(627%) hue-rotate(190deg) brightness(92%) contrast(92%);" />
 								</div>
 								<div class="elementor-control-notice-main">
 									<div class="elementor-control-notice-main-content">
