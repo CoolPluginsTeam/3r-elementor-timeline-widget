@@ -359,7 +359,7 @@ class TweTimelineWidget extends Widget_Base {
 									<div class="elementor-control-notice-main-actions">
 										<a class="elementor-button e-btn e-info e-btn-1" style="color:white;"
 										href="https://cooltimeline.com/plugin/elementor-timeline-widget-pro/?utm_source=vtwe_plugin&utm_medium=inside&utm_campaign=get_pro&utm_content=content_tab_settings#pricing"
-										target="_blank">
+										target="_blank" rel="noopener noreferrer">
 											Get Pro
 										</a>
 									</div>
