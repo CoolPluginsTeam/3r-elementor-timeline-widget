@@ -877,6 +877,7 @@ class TweTimelineWidget extends Widget_Base {
 							[
 								'img' => [
 									'src'    => [],
+									'alt' => [],
 									'title'  => [],
 									'width'  => [],
 									'height' => [],
@@ -898,6 +899,7 @@ class TweTimelineWidget extends Widget_Base {
 							[
 								'img' => [
 									'src'    => [],
+									'alt' => [],
 									'title'  => [],
 									'width'  => [],
 									'height' => [],
