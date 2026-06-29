@@ -18,8 +18,8 @@
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 if( !defined( 'TWE_VERSION' ) ){ define( 'TWE_VERSION', '2.7.4' ); }
-define( 'TWE_PLUGIN_URL', plugins_url( '/', __FILE__ ) );
-define( 'TWE_PLUGIN_PATH', plugin_dir_path(__FILE__));
+if( !defined( 'TWE_PLUGIN_URL' ) ){ define( 'TWE_PLUGIN_URL', plugins_url( '/', __FILE__ ) ); }
+if( !defined( 'TWE_PLUGIN_PATH' ) ){ define( 'TWE_PLUGIN_PATH', plugin_dir_path(__FILE__)); }
 add_action( 'elementor/preview/enqueue_styles', 'twe_enqueue_style' );
 add_action('wp_enqueue_scripts', 'twe_enqueue_style');
 add_action( 'elementor/editor/after_enqueue_styles','twe_enqueue_editor_style' );
