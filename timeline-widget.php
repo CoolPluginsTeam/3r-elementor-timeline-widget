@@ -869,6 +869,25 @@ class TweTimelineWidget extends Widget_Base {
 		   <div class="tl-heading">
 			 <div class="tl-content">
 
+			<?php $image_html = wp_kses(
+							$image,
+							[
+								'img' => [
+									'src'    => [],
+									'alt' => [],
+									'title'  => [],
+									'width'  => [],
+									'height' => [],
+									'class'  => [],
+								],
+								'div' => [
+									'class' => [],
+								],
+							]
+						);
+					
+						?>
+
 			    <?php if ( $is_one_sided ) : ?>
 
 						<div class="be-desc">
@@ -876,44 +895,14 @@ class TweTimelineWidget extends Widget_Base {
 						</div>
 
 						<?php
-						echo wp_kses(
-							$image,
-							[
-								'img' => [
-									'src'    => [],
-									'alt' => [],
-									'title'  => [],
-									'width'  => [],
-									'height' => [],
-									'class'  => [],
-								],
-								'div' => [
-									'class' => [],
-								],
-							]
-						);
+						echo $image_html;
 						?>
 						<?php echo $content_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- already escaped in $content_html ?>
 
 			     <?php else : ?>
 
 						<?php
-						echo wp_kses(
-							$image,
-							[
-								'img' => [
-									'src'    => [],
-									'alt' => [],
-									'title'  => [],
-									'width'  => [],
-									'height' => [],
-									'class'  => [],
-								],
-								'div' => [
-									'class' => [],
-								],
-							]
-						);
+						echo $image_html;
 						?>
 
 						<div class="be-desc">
