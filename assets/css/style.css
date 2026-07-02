@@ -135,9 +135,6 @@
     left: 28px;
     margin-left: 0;
   }
-  ul.timeline > li > .tldate {
-    margin: 0;
-  }
   ul.timeline > li > .timeline-panel {
     float: right;
   }
