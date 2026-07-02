@@ -93,7 +93,7 @@ class TweTimelinePlugin {
    public function widgets_registered() {
 
       if ( defined('ELEMENTOR_PATH') && class_exists('Elementor\Widget_Base') ) {
-         $template_file = TWE_PLUGIN_PATH(__FILE__) . 'timeline-widget.php';
+         $template_file = TWE_PLUGIN_PATH . 'timeline-widget.php';
      
          if ( is_readable($template_file) ) {
              require_once $template_file;
