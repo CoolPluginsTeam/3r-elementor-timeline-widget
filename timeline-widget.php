@@ -846,7 +846,7 @@ class TweTimelineWidget extends Widget_Base {
 	protected function render() {
 		$settings = $this->get_settings_for_display();
 		$is_one_sided = ( isset( $settings['twe_layout'] ) && $settings['twe_layout'] === 'one-sided' ) ? 'timeline-one-sided'
-		: '';;
+		: '';
 		$direction = isset($settings['tl_change_direction']) ? $settings['tl_change_direction'] : '';
 		$data	  = !empty($settings['list']) && is_array($settings['list']) ? $settings['list'] : [];
 		$this->add_render_attribute( 'title', 'class', 'be-title' );
