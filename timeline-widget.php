@@ -111,6 +111,13 @@ class TweTimelineWidget extends Widget_Base {
 			]
 		);
 		$repeater = new Repeater();
+
+		$this->register_repeater_content_tab( $repeater );
+		$this->register_repeater_advanced_tab( $repeater );
+		$this->register_timeline_repeater_control( $repeater );
+	}
+
+	private function register_repeater_content_tab( $repeater ) {
 			
 		$repeater->start_controls_tabs(
 			'twae_story_tabs'
@@ -229,6 +236,9 @@ class TweTimelineWidget extends Widget_Base {
 			]
 		);
 	 $repeater->end_controls_tab();
+	}
+
+	private function register_repeater_advanced_tab( $repeater ) {
 		$repeater->start_controls_tab(
 				'twe_advanced_tab',
 				array(
@@ -330,6 +340,9 @@ class TweTimelineWidget extends Widget_Base {
 
 		$repeater->end_controls_tab();
 		$repeater->end_controls_tabs(); 
+	}
+
+	private function register_timeline_repeater_control( $repeater ) {
 		$this->add_control(
 			'list',
 			[
