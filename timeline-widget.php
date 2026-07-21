@@ -275,7 +275,6 @@ class TweTimelineWidget extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .twae-wrapper {{CURRENT_ITEM}}' => '--tw-cbx-bd-color: {{VALUE}};
-					--tw-cbx-bd-color: {{VALUE}};
 					--tw-arw-bd-color: {{VALUE}};',
 				),
 			)
