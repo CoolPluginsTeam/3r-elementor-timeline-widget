@@ -111,10 +111,10 @@ class TweTimelineWidget extends Widget_Base {
 			'content_section',
 			[
 				'label' => __( 'Timeline', '3r-elementor-timeline-widget' ),
-				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+				'tab' => Controls_Manager::TAB_CONTENT,
 			]
 		);
-		$repeater = new \Elementor\Repeater();
+		$repeater = new Repeater();
 			
 		$repeater->start_controls_tabs(
 			'twae_story_tabs'
@@ -138,7 +138,7 @@ class TweTimelineWidget extends Widget_Base {
 					esc_url( 'https://cooltimeline.com/elementor-widget/vertical-timeline-widget-for-elementor/?utm_source=vtwe_plugin&utm_medium=inside&utm_campaign=demo&utm_content=content_tab_settings' ),
 					esc_html__( '(Demo ⇗)', '3r-elementor-timeline-widget' )
 					),
-				'type'         => \Elementor\Controls_Manager::SWITCHER,
+				'type'         => Controls_Manager::SWITCHER,
 				'label_on'     => __( 'Show', 'twae' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- using shared text domain intentionally
 				'label_off'    => __( 'Hide', 'twae' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- using shared text domain intentionally
 				'return_value' => 'yes',
@@ -153,7 +153,7 @@ class TweTimelineWidget extends Widget_Base {
 			'twe_date_label',
 			array(
 				'label'   => __( 'Label / Date', '3r-elementor-timeline-widget' ),
-				'type'    => \Elementor\Controls_Manager::TEXT,
+				'type'    => Controls_Manager::TEXT,
 				'default' => 'Jan 2020',
 			)
 		);
@@ -164,7 +164,7 @@ class TweTimelineWidget extends Widget_Base {
 			'twe_media',
 			array(
 				'label'     => __( 'Add Video/Slideshow', '3r-elementor-timeline-widget' ),
-				'type'      => \Elementor\Controls_Manager::CHOOSE,
+				'type'      => Controls_Manager::CHOOSE,
 				'options'   => array(
 					'video'     => array(
 						'title' => __( 'Video', '3r-elementor-timeline-widget' ),
@@ -183,7 +183,7 @@ class TweTimelineWidget extends Widget_Base {
 			$repeater->add_control(
 				'twe_label_upgrade_button',
 				[
-					'type' => \Elementor\Controls_Manager::RAW_HTML,
+					'type' => Controls_Manager::RAW_HTML,
 					'raw'  => '
 						<div class="twae-upgrade-content-notice">
 							<a href="https://cooltimeline.com/plugin/elementor-timeline-widget-pro/?utm_source=vtwe_plugin&utm_medium=inside&utm_campaign=get_pro&utm_content=content_tab_settings#pricing" 
@@ -201,9 +201,9 @@ class TweTimelineWidget extends Widget_Base {
 			'image',
 			[
 				'label' => __( 'Choose Image', '3r-elementor-timeline-widget' ),
-				'type' => \Elementor\Controls_Manager::MEDIA,
+				'type' => Controls_Manager::MEDIA,
 				'default' => [
-					'url' => \Elementor\Utils::get_placeholder_image_src(),
+					'url' => Utils::get_placeholder_image_src(),
 				],
 			]
 		);
@@ -217,7 +217,7 @@ class TweTimelineWidget extends Widget_Base {
 		$repeater->add_control(
 			'list_title', [
 				'label' => __( 'Title', '3r-elementor-timeline-widget' ),
-				'type' => \Elementor\Controls_Manager::TEXT,
+				'type' => Controls_Manager::TEXT,
 				'default' => __( 'Timeline' , '3r-elementor-timeline-widget' ),
 				'label_block' => true,
 			]
@@ -227,7 +227,7 @@ class TweTimelineWidget extends Widget_Base {
 		$repeater->add_control(
 			'list_content', [
 				'label' => __( 'Timelines', '3r-elementor-timeline-widget' ),
-				'type' => \Elementor\Controls_Manager::WYSIWYG,
+				'type' => Controls_Manager::WYSIWYG,
 				'default' => __( 'Item content. Click the edit button to change this text.' , '3r-elementor-timeline-widget' ),
 				'show_label' => false,
 			]
@@ -242,7 +242,7 @@ class TweTimelineWidget extends Widget_Base {
 				$repeater->add_control(
 				'twe_color_upgrade_button',
 				[
-					'type' => \Elementor\Controls_Manager::RAW_HTML,
+					'type' => Controls_Manager::RAW_HTML,
 					'raw'  => '
 						<div class="twae-upgrade-color-notice">
 							<a href="https://cooltimeline.com/plugin/elementor-timeline-widget-pro/?utm_source=vtwe_plugin&utm_medium=inside&utm_campaign=get_pro&utm_content=advanced_tab_settings#pricing" 
@@ -262,7 +262,7 @@ class TweTimelineWidget extends Widget_Base {
 			'twe_custom_story_bgcolor',
 			array(
 				'label'       => __( 'Background Color', '3r-elementor-timeline-widget' ),
-				'type'        => \Elementor\Controls_Manager::COLOR,
+				'type'        => Controls_Manager::COLOR,
 				'render_type' => 'template',
 				'selectors'   => array(
 					'{{WRAPPER}} .twae-wrapper {{CURRENT_ITEM}}' => '--tw-cbx-bg: {{VALUE}};
@@ -276,7 +276,7 @@ class TweTimelineWidget extends Widget_Base {
 			'twe_custom_story_bdcolor',
 			array(
 				'label'     => esc_html__( 'Border Color', '3r-elementor-timeline-widget' ),
-				'type'      => \Elementor\Controls_Manager::COLOR,
+				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .twae-wrapper {{CURRENT_ITEM}}' => '--tw-cbx-bd-color: {{VALUE}};
 					--tw-cbx-bd-color: {{VALUE}};
@@ -289,7 +289,7 @@ class TweTimelineWidget extends Widget_Base {
 			'twe_custom_story_title_color',
 			array(
 				'label'     => __( 'Title Color', '3r-elementor-timeline-widget' ),
-				'type'      => \Elementor\Controls_Manager::COLOR,
+				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .twae-wrapper {{CURRENT_ITEM}}' => '--tw-cbx-title-color: {{VALUE}}',
 				),
@@ -301,7 +301,7 @@ class TweTimelineWidget extends Widget_Base {
 			'twe_custom_description_color',
 			array(
 				'label'     => __( 'Description Color', '3r-elementor-timeline-widget' ),
-				'type'      => \Elementor\Controls_Manager::COLOR,
+				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .twae-wrapper {{CURRENT_ITEM}}' => '--tw-cbx-des-color: {{VALUE}}',
 				),
@@ -312,7 +312,7 @@ class TweTimelineWidget extends Widget_Base {
 				'twe_add_icon_on_line',
 				[
 					'label'        => __( 'Add Icon on Line', '3r-elementor-timeline-widget' ),
-					'type'         => \Elementor\Controls_Manager::SWITCHER,
+					'type'         => Controls_Manager::SWITCHER,
 					'label_on'     => __( 'Yes', '3r-elementor-timeline-widget' ),
 					'label_off'    => __( 'No', '3r-elementor-timeline-widget' ),
 					'return_value' => 'yes',
@@ -325,7 +325,7 @@ class TweTimelineWidget extends Widget_Base {
 			'twe_title_link',
 			array(
 				'label'        => __( 'Read More Button', '3r-elementor-timeline-widget' ),
-				'type'         => \Elementor\Controls_Manager::SWITCHER,
+				'type'         => Controls_Manager::SWITCHER,
 				'label_on'     => __( 'Show', 'twae' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- using shared text domain intentionally
 				'label_off'    => __( 'Hide', 'twae' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- using shared text domain intentionally
 				'return_value' => 'yes',
@@ -338,7 +338,7 @@ class TweTimelineWidget extends Widget_Base {
 		$this->add_control(
 			'list',
 			[
-				'type' => \Elementor\Controls_Manager::REPEATER,
+				'type' => Controls_Manager::REPEATER,
 				'fields' =>  $repeater->get_controls(),
 				'default' => [
 					[
@@ -371,7 +371,7 @@ class TweTimelineWidget extends Widget_Base {
 				$this->add_control(
 					'twae_upgrade_notice',
 					[
-						'type' => \Elementor\Controls_Manager::RAW_HTML,
+						'type' => Controls_Manager::RAW_HTML,
 						'raw'  => '<div class="elementor-control-raw-html">
 							<div class="elementor-control-notice elementor-control-notice-type-info twae-upgrade-pro-notice" style="position: relative;">
 								<button type="button" class="elementor-control-notice-dismiss twae_hide_upgrade_notice_editor" style="position: absolute; top: 5px; right: 5px; z-index: 10;">
@@ -413,7 +413,7 @@ class TweTimelineWidget extends Widget_Base {
 				$this->add_control(
 					'twae_migrate_notice',
 					[
-						'type' => \Elementor\Controls_Manager::RAW_HTML,
+						'type' => Controls_Manager::RAW_HTML,
 						'raw'  => '<div class="elementor-control-raw-html">
 							<div class="elementor-control-notice elementor-control-notice-type-info twae-migration-notice" style="position: relative;">
 								<button type="button" class="elementor-control-notice-dismiss twae_hide_migration_notice_editor" style="position: absolute; top: 5px; right: 5px; z-index: 10;">
@@ -450,7 +450,7 @@ class TweTimelineWidget extends Widget_Base {
 			'twe_layout_section',
 			array(
 				'label' => __( 'Layout Settings', '3r-elementor-timeline-widget' ),
-				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+				'tab'   => Controls_Manager::TAB_CONTENT,
 			)
 		);
 		// Select Layout
@@ -458,7 +458,7 @@ class TweTimelineWidget extends Widget_Base {
 			'twe_layout',
 			array(
 				'label'   => __( 'Layout', '3r-elementor-timeline-widget' ),
-				'type'    => \Elementor\Controls_Manager::SELECT,
+				'type'    => Controls_Manager::SELECT,
 				'default' => 'centered',
 				'options' => array(
 					'centered'               => esc_html__( 'Vertical Right / Left (Free)', '3r-elementor-timeline-widget' ),
@@ -479,7 +479,7 @@ class TweTimelineWidget extends Widget_Base {
 			'twe_content_alignment',
 			array(
 				'label'     => esc_html__( 'Content Alignment', '3r-elementor-timeline-widget' ),
-				'type'      => \Elementor\Controls_Manager::CHOOSE,
+				'type'      => Controls_Manager::CHOOSE,
 				'separator' => 'before',
 				'options'   => array(
 					'left'   => array(
@@ -506,7 +506,7 @@ class TweTimelineWidget extends Widget_Base {
 			'twe_display_icons',
 			array(
 				'label'   => esc_html__( 'Display Icons', '3r-elementor-timeline-widget' ),
-				'type'    => \Elementor\Controls_Manager::CHOOSE,
+				'type'    => Controls_Manager::CHOOSE,
 				'options' => array(
 					'displayicons' => array(
 						'title' => esc_html__( 'Icons', '3r-elementor-timeline-widget' ),
@@ -531,7 +531,7 @@ class TweTimelineWidget extends Widget_Base {
 			'twe_animation',
 			array(
 				'label'     => __( 'Animations', '3r-elementor-timeline-widget' ),
-				'type'      => \Elementor\Controls_Manager::SELECT,
+				'type'      => Controls_Manager::SELECT,
 				'default'   => 'fade',
 				'options' => array(
 					'none'            => 'none',
@@ -548,7 +548,7 @@ class TweTimelineWidget extends Widget_Base {
 			$this->add_control(
 				'twe_upgrade_button_layout_section',
 				[
-					'type' => \Elementor\Controls_Manager::RAW_HTML,
+					'type' => Controls_Manager::RAW_HTML,
 					'raw'  => '
 						<div class="twe-upgrade-button-notice-layout-section">
 							<a href="https://cooltimeline.com/plugin/elementor-timeline-widget-pro/?utm_source=vtwe_plugin&utm_medium=inside&utm_campaign=get_pro&utm_content=layout_tab_settings#pricing" 
@@ -602,7 +602,7 @@ class TweTimelineWidget extends Widget_Base {
 	 $this->add_control(
 		'title_color', [
 		'label' => __( 'Title Fonts Color', '3r-elementor-timeline-widget' ),
-		'type' => \Elementor\Controls_Manager::COLOR,
+		'type' => Controls_Manager::COLOR,
 		'selectors' => [
 				'{{WRAPPER}} .tl-heading .tl-content .be-desc .be-title' => 'color: {{VALUE}}',
 			],
@@ -641,7 +641,7 @@ class TweTimelineWidget extends Widget_Base {
 		$this->add_control(
 		'content_color', [
 		'label' => __( 'Content Fonts Color', '3r-elementor-timeline-widget' ),
-		'type' => \Elementor\Controls_Manager::COLOR,
+		'type' => Controls_Manager::COLOR,
 		'selectors' => [
 			'{{WRAPPER}} .be-pack .timeline-panel, {{WRAPPER}} .be-pack .timeline-panel p' => 'color: {{VALUE}}',
 		],
@@ -671,7 +671,7 @@ class TweTimelineWidget extends Widget_Base {
 				'theme_color',
 				[
 					'label' => __( 'Border Color', '3r-elementor-timeline-widget' ),
-					'type'  => \Elementor\Controls_Manager::COLOR,
+					'type'  => Controls_Manager::COLOR,
 					'selectors' => [
 
 						'{{WRAPPER}} .timeline li .tl-circ' =>
@@ -701,7 +701,7 @@ class TweTimelineWidget extends Widget_Base {
 			'bg_color',
 			[
 				'label' => __( 'Background Color', '3r-elementor-timeline-widget' ),
-				'type'  => \Elementor\Controls_Manager::COLOR,
+				'type'  => Controls_Manager::COLOR,
 				'default' => '#fff',
 				'selectors' => [
 
@@ -725,7 +725,7 @@ class TweTimelineWidget extends Widget_Base {
 		'circle_color',
 		[
 			'label' => __( 'Icon Background / Connector Color', '3r-elementor-timeline-widget' ),
-			'type'  => \Elementor\Controls_Manager::COLOR,
+			'type'  => Controls_Manager::COLOR,
 			'selectors' => [
 
 				'{{WRAPPER}} .timeline li .tl-circ' =>
@@ -757,7 +757,7 @@ class TweTimelineWidget extends Widget_Base {
 			'tl_change_direction',
 			[
 				'label' => __( 'Direction', '3r-elementor-timeline-widget' ),
-				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'type' => Controls_Manager::SWITCHER,
 				'label_on' => __( 'Left', '3r-elementor-timeline-widget' ),
 				'label_off' => __( 'Right', '3r-elementor-timeline-widget' ),
 				'return_value' => 'left',
