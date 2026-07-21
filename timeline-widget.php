@@ -879,6 +879,19 @@ class TweTimelineWidget extends Widget_Base {
 		if ( empty( $data ) ) {
 			echo '</ul>'; return;
 		}
+		$image_allowed_tags = [
+			'img' => [
+				'src'    => [],
+				'alt' => [],
+				'title'  => [],
+				'width'  => [],
+				'height' => [],
+				'class'  => [],
+			],
+			'div' => [
+				'class' => [],
+			],
+		];
 		foreach($data as $index=>$content){
 		    $title_html = sprintf(
 				'<%1$s %2$s>%3$s</%1$s>',
@@ -929,19 +942,7 @@ class TweTimelineWidget extends Widget_Base {
 
 			<?php $image_html = wp_kses(
 							$image,
-							[
-								'img' => [
-									'src'    => [],
-									'alt' => [],
-									'title'  => [],
-									'width'  => [],
-									'height' => [],
-									'class'  => [],
-								],
-								'div' => [
-									'class' => [],
-								],
-							]
+							$image_allowed_tags
 						);
 					
 						?>
