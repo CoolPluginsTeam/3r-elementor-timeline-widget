@@ -382,7 +382,7 @@ class TweTimelineWidget extends Widget_Base {
 								</div>
 								<div class="elementor-control-notice-main">
 									<div class="elementor-control-notice-main-content">
-										Want more advanced features? Upgrade to the Pro version.
+										'.esc_html__( 'Want more advanced features? Upgrade to the Pro version.', '3r-elementor-timeline-widget' ).'
 									</div>
 									<div class="elementor-control-notice-main-actions">
 										<a class="elementor-button e-btn e-info e-btn-1" style="color:white;"
@@ -424,7 +424,7 @@ class TweTimelineWidget extends Widget_Base {
 								</div>
 								<div class="elementor-control-notice-main">
 									<div class="elementor-control-notice-main-content">
-										Do you want to migrate this timeline into Timeline Widget Pro to use the advanced features?
+										'.esc_html__( 'Do you want to migrate this timeline into Timeline Widget Pro to use the advanced features?', '3r-elementor-timeline-widget' ).'
 									</div>
 									<div class="elementor-control-notice-main-actions">
 										<button type="button" class="elementor-button e-btn e-info e-btn-1" id="twae-run-migration">Migrate Now</button>
@@ -468,7 +468,7 @@ class TweTimelineWidget extends Widget_Base {
 					'modern'                    => esc_html__( 'Vertical Tab(Pro)', '3r-elementor-timeline-widget' ),
 					'horizontal'             => esc_html__( 'Horizontal Top(Pro)', '3r-elementor-timeline-widget' ),
 					'horizontal-bottom'      => esc_html__( 'Horizontal Bottom(Pro)', '3r-elementor-timeline-widget' ),
-					'horizontal-highlighted' => 'Horizontal Highlighted(Pro)',
+					'horizontal-highlighted' => esc_html__( 'Horizontal Highlighted(Pro)', '3r-elementor-timeline-widget' )
 				),
 			)
 		);
@@ -621,7 +621,7 @@ class TweTimelineWidget extends Widget_Base {
   	  $this->add_group_control(
 		Group_Control_Text_Shadow::get_type(),
 		[
-			'label' => 'Title Text Shadow',
+			'label' => esc_html__( 'Title Text Shadow', '3r-elementor-timeline-widget' ),
 			'name' => 'text_shadow',
 			'selector' => '{{WRAPPER}} .tl-heading .be-title',
 		]
@@ -651,7 +651,7 @@ class TweTimelineWidget extends Widget_Base {
 	
 		$this->add_group_control(
 		Group_Control_Typography::get_type(),
-		[	'label' => 'Content Typography',
+		[	'label' => esc_html__( 'Content Typography', '3r-elementor-timeline-widget' ),
 			'name' => 'content_typography',
 			'selector' => '{{WRAPPER}} .be-pack .timeline-panel',
 		]
