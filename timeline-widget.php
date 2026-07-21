@@ -12,12 +12,8 @@ use Elementor\Controls_Manager;
 use Elementor\Utils;
 use Elementor\Repeater;
 use Elementor\Group_Control_Image_Size;
-use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Box_Shadow;
-use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Typography;
-use Elementor\Scheme_Color;
 use Elementor\Group_Control_Text_Shadow;
 
 if ( ! defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly
