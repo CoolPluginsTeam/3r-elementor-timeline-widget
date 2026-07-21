@@ -87,7 +87,7 @@ class TweTimelinePlugin {
    }
  
    public function init(){
-      add_action( 'elementor/widgets/widgets_register', array( $this, 'widgets_registered' ) );
+      add_action( 'elementor/widgets/register', array( $this, 'widgets_registered' ) );
    }
  
    public function widgets_registered() {
