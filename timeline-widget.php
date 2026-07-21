@@ -566,6 +566,12 @@ class TweTimelineWidget extends Widget_Base {
 	 * @access private
 	 */
 	private function register_style_sections() {
+		$this->register_content_style();
+		$this->register_box_style();
+		$this->register_image_style();
+	}
+
+	private function register_content_style() {
 
 	 /*------- BoxStyle ------------*/
 	 $this->start_controls_section(
@@ -653,6 +659,9 @@ class TweTimelineWidget extends Widget_Base {
 		);
    
 		$this->end_controls_section();
+	}
+
+	private function register_box_style() {
 		//=======Content style =======
 		$this->start_controls_section(
 			'section_title_style',
@@ -765,6 +774,9 @@ class TweTimelineWidget extends Widget_Base {
 		);
 	
 		$this->end_controls_section();
+	}
+
+	private function register_image_style() {
 		$this->start_controls_section(
 			'image_style',
 			[
