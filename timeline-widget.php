@@ -5,7 +5,7 @@
  * @since 1.0.0
  */
 
-namespace twe\Widgets;
+namespace twe\Widgets;//phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedNamespaceFound
 
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
@@ -954,14 +954,14 @@ class TweTimelineWidget extends Widget_Base {
 						</div>
 
 						<?php
-						echo $image_html;
+						echo $image_html;// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- already escaped in $image, $image_allowed_tag
 						?>
 						<?php echo $content_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- already escaped in $content_html ?>
 
 			     <?php else : ?>
 
 						<?php
-						echo $image_html;
+						echo $image_html;// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- already escaped in $image, $image_allowed_tag
 						?>
 
 						<div class="be-desc">

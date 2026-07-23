@@ -25,7 +25,7 @@ add_action('wp_enqueue_scripts', 'twe_enqueue_style');
 add_action( 'elementor/editor/after_enqueue_styles','twe_enqueue_editor_style' );
 add_action('elementor/editor/after_enqueue_scripts','twe_enqueue_editor_script');
 
-function twe_enqueue_editor_style() {
+function twe_enqueue_editor_style() {// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound
 
     // Load your custom editor CSS
     wp_enqueue_style(
@@ -39,7 +39,7 @@ function twe_enqueue_editor_style() {
 
 
 }
-function twe_enqueue_editor_script()  {
+function twe_enqueue_editor_script()  {//phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound
     wp_enqueue_script(
         'twae-editor-js',
         TWE_PLUGIN_URL . 'assets/js/twe-editor.js',
@@ -66,7 +66,7 @@ function twe_enqueue_editor_script()  {
  * @return void
  */
 
- function twe_enqueue_style() {
+ function twe_enqueue_style() {//phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound	
 	wp_register_style(
 		'twe-preview',
 		TWE_PLUGIN_URL . 'assets/css/style.css',
@@ -112,7 +112,7 @@ add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), 'twe_add_pro_lin
  * @return links
  */
 
-function twe_add_pro_link( $links ) {
+function twe_add_pro_link( $links ) {//phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound	
     $links[] = '<a style="font-weight:bold; color:#852636;" href="' . esc_url( 'https://cooltimeline.com/plugin/elementor-timeline-widget-pro/?utm_source=vtwe_plugin&utm_medium=inside&utm_campaign=get_pro&utm_content=plugins_list#pricing' ) . '" target="_blank" rel="noopener noreferrer">' . esc_html__( 'Get Pro', '3r-elementor-timeline-widget' ) . '</a>';    return $links;
 }
 add_filter( 'plugin_row_meta', 'twe_add_view_demo_row_meta', 10, 2 );
@@ -123,7 +123,7 @@ add_filter( 'plugin_row_meta', 'twe_add_view_demo_row_meta', 10, 2 );
  * @return links
  */
 
-function twe_add_view_demo_row_meta( $links, $file ) {
+function twe_add_view_demo_row_meta( $links, $file ) {//phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound	
     if ( $file === plugin_basename( __FILE__ ) ) {
         $demo_link = '<a href="' . esc_url( 'https://cooltimeline.com/elementor-widget/vertical-timeline-widget-for-elementor/?utm_source=vtwe_plugin&utm_medium=inside&utm_campaign=demo&utm_content=plugins_list' ) . '" target="_blank" rel="noopener noreferrer">' . esc_html__( 'View Demo', '3r-elementor-timeline-widget' ) . '</a>';        array_splice( $links, count( $links ), 0, $demo_link );
     }
