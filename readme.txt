@@ -1,7 +1,7 @@
 === Vertical Timeline Widget for Elementor ===
-Contributors: satindersingh,coolplugins,narinder-singh,rafiul17
+Contributors: satindersingh,coolplugins,narinder-singh
 Donate link: https://paypal.me/CoolPlugins/10USD/
-Tags: Elementor, vertical-timeline, elementor-timeline, timeline, widget
+Tags: Elementor, vertical-timeline, elementor-timeline, timeline, elementor widget
 Requires at least: 5.2
 Tested up to: 7.1
 Requires PHP: 7.2
@@ -9,7 +9,7 @@ Stable tag: 2.7.6
 License: GPL v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
  
-Use a vertical timeline widget for Elementor to showcase your journey, story, milestones, or roadmap directly inside Elementor.
+Create a vertical timeline in Elementor to showcase your journey, history, story, milestones or roadmap with this Elementor timeline plugin.
 
 == Description ==
 **Vertical Timeline Widget for Elementor** is a powerful plugin that helps you showcase your company history, achievements, personal journey, milestones, and more in a **vertical timeline layout**, directly inside the **Elementor editor**.
@@ -56,11 +56,10 @@ You have to upgrade to **[Timeline Widget Pro](https://cooltimeline.com/plugin/e
 
 == Screenshot ==
 
-1.  Vertical Timeline Widget Demo Preview
-2.  Both Sided Layout Preview 
-3.  One Sided Layout Preview
-2.  Timeline Item Content Settings
-4.  Timeline Style & Advanced Settings
+1. Vertical Timeline Widget Demo Preview
+2. Both Sided Layout Preview 
+3. One Sided Layout Preview
+4. Timeline Item Content Settings
 
 == Frequently Asked Questions ==
 
