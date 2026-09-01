@@ -5,19 +5,15 @@
  * @since 1.0.0
  */
 
-namespace twe\Widgets;
+namespace twe\Widgets;//phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedNamespaceFound
 
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use Elementor\Utils;
 use Elementor\Repeater;
 use Elementor\Group_Control_Image_Size;
-use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Box_Shadow;
-use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
-use Elementor\Scheme_Typography;
-use Elementor\Scheme_Color;
 use Elementor\Group_Control_Text_Shadow;
 
 if ( ! defined( 'ABSPATH' ) ) { exit; } // Exit if accessed directly
@@ -86,16 +82,42 @@ class TweTimelineWidget extends Widget_Base {
 	 * @since 1.0.0
 	 * @access protected
 	 */
-	protected function register_controls() {
 
+	 public function get_style_depends() {
+		return array( 'twe-preview' );
+	}
+
+	protected function register_controls() {
+		$this->register_content_section();
+		$this->register_upgrade_notice();
+		$this->register_migration_notice();
+		$this->end_controls_section();
+		$this->register_layout_section();
+		$this->register_style_sections();
+	}
+
+	/**
+	 * Register timeline content section controls.
+	 *
+	 * @since 1.0.0
+	 * @access private
+	 */
+	private function register_content_section() {
 		$this->start_controls_section(
 			'content_section',
 			[
 				'label' => __( 'Timeline', '3r-elementor-timeline-widget' ),
-				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+				'tab' => Controls_Manager::TAB_CONTENT,
 			]
 		);
-		$repeater = new \Elementor\Repeater();
+		$repeater = new Repeater();
+
+		$this->register_repeater_content_tab( $repeater );
+		$this->register_repeater_advanced_tab( $repeater );
+		$this->register_timeline_repeater_control( $repeater );
+	}
+
+	private function register_repeater_content_tab( $repeater ) {
 			
 		$repeater->start_controls_tabs(
 			'twae_story_tabs'
@@ -113,8 +135,13 @@ class TweTimelineWidget extends Widget_Base {
 		$repeater->add_control(
 			'twe_show_year_label',
 			array(
-				'label'        => __( 'Year / Label (Top) <a href="https://cooltimeline.com/elementor-widget/vertical-timeline-widget-for-elementor/?utm_source=vtwe_plugin&utm_medium=inside&utm_campaign=demo&utm_content=content_tab_settings" target="_blank" rel="noopener noreferrer" style=" pointer-events: all; color:  #EDACFB;">(Demo ⇗)</a>', '3r-elementor-timeline-widget' ),
-				'type'         => \Elementor\Controls_Manager::SWITCHER,
+					'label' => sprintf(
+					'%s <a href="%s" target="_blank" rel="noopener noreferrer" style="pointer-events: all; color: #EDACFB;">%s</a>',
+					esc_html__( 'Year / Label (Top)', '3r-elementor-timeline-widget' ),
+					esc_url( 'https://cooltimeline.com/elementor-widget/vertical-timeline-widget-for-elementor/?utm_source=vtwe_plugin&utm_medium=inside&utm_campaign=demo&utm_content=content_tab_settings' ),
+					esc_html__( '(Demo ⇗)', '3r-elementor-timeline-widget' )
+					),
+				'type'         => Controls_Manager::SWITCHER,
 				'label_on'     => __( 'Show', 'twae' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- using shared text domain intentionally
 				'label_off'    => __( 'Hide', 'twae' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- using shared text domain intentionally
 				'return_value' => 'yes',
@@ -129,7 +156,7 @@ class TweTimelineWidget extends Widget_Base {
 			'twe_date_label',
 			array(
 				'label'   => __( 'Label / Date', '3r-elementor-timeline-widget' ),
-				'type'    => \Elementor\Controls_Manager::TEXT,
+				'type'    => Controls_Manager::TEXT,
 				'default' => 'Jan 2020',
 			)
 		);
@@ -140,7 +167,7 @@ class TweTimelineWidget extends Widget_Base {
 			'twe_media',
 			array(
 				'label'     => __( 'Add Video/Slideshow', '3r-elementor-timeline-widget' ),
-				'type'      => \Elementor\Controls_Manager::CHOOSE,
+				'type'      => Controls_Manager::CHOOSE,
 				'options'   => array(
 					'video'     => array(
 						'title' => __( 'Video', '3r-elementor-timeline-widget' ),
@@ -159,7 +186,7 @@ class TweTimelineWidget extends Widget_Base {
 			$repeater->add_control(
 				'twe_label_upgrade_button',
 				[
-					'type' => \Elementor\Controls_Manager::RAW_HTML,
+					'type' => Controls_Manager::RAW_HTML,
 					'raw'  => '
 						<div class="twae-upgrade-content-notice">
 							<a href="https://cooltimeline.com/plugin/elementor-timeline-widget-pro/?utm_source=vtwe_plugin&utm_medium=inside&utm_campaign=get_pro&utm_content=content_tab_settings#pricing" 
@@ -177,9 +204,9 @@ class TweTimelineWidget extends Widget_Base {
 			'image',
 			[
 				'label' => __( 'Choose Image', '3r-elementor-timeline-widget' ),
-				'type' => \Elementor\Controls_Manager::MEDIA,
+				'type' => Controls_Manager::MEDIA,
 				'default' => [
-					'url' => \Elementor\Utils::get_placeholder_image_src(),
+					'url' => Utils::get_placeholder_image_src(),
 				],
 			]
 		);
@@ -193,7 +220,7 @@ class TweTimelineWidget extends Widget_Base {
 		$repeater->add_control(
 			'list_title', [
 				'label' => __( 'Title', '3r-elementor-timeline-widget' ),
-				'type' => \Elementor\Controls_Manager::TEXT,
+				'type' => Controls_Manager::TEXT,
 				'default' => __( 'Timeline' , '3r-elementor-timeline-widget' ),
 				'label_block' => true,
 			]
@@ -203,12 +230,15 @@ class TweTimelineWidget extends Widget_Base {
 		$repeater->add_control(
 			'list_content', [
 				'label' => __( 'Timelines', '3r-elementor-timeline-widget' ),
-				'type' => \Elementor\Controls_Manager::WYSIWYG,
+				'type' => Controls_Manager::WYSIWYG,
 				'default' => __( 'Item content. Click the edit button to change this text.' , '3r-elementor-timeline-widget' ),
 				'show_label' => false,
 			]
 		);
-	$repeater->end_controls_tab();
+	 $repeater->end_controls_tab();
+	}
+
+	private function register_repeater_advanced_tab( $repeater ) {
 		$repeater->start_controls_tab(
 				'twe_advanced_tab',
 				array(
@@ -218,7 +248,7 @@ class TweTimelineWidget extends Widget_Base {
 				$repeater->add_control(
 				'twe_color_upgrade_button',
 				[
-					'type' => \Elementor\Controls_Manager::RAW_HTML,
+					'type' => Controls_Manager::RAW_HTML,
 					'raw'  => '
 						<div class="twae-upgrade-color-notice">
 							<a href="https://cooltimeline.com/plugin/elementor-timeline-widget-pro/?utm_source=vtwe_plugin&utm_medium=inside&utm_campaign=get_pro&utm_content=advanced_tab_settings#pricing" 
@@ -238,7 +268,7 @@ class TweTimelineWidget extends Widget_Base {
 			'twe_custom_story_bgcolor',
 			array(
 				'label'       => __( 'Background Color', '3r-elementor-timeline-widget' ),
-				'type'        => \Elementor\Controls_Manager::COLOR,
+				'type'        => Controls_Manager::COLOR,
 				'render_type' => 'template',
 				'selectors'   => array(
 					'{{WRAPPER}} .twae-wrapper {{CURRENT_ITEM}}' => '--tw-cbx-bg: {{VALUE}};
@@ -252,10 +282,9 @@ class TweTimelineWidget extends Widget_Base {
 			'twe_custom_story_bdcolor',
 			array(
 				'label'     => esc_html__( 'Border Color', '3r-elementor-timeline-widget' ),
-				'type'      => \Elementor\Controls_Manager::COLOR,
+				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .twae-wrapper {{CURRENT_ITEM}}' => '--tw-cbx-bd-color: {{VALUE}};
-					--tw-cbx-bd-color: {{VALUE}};
 					--tw-arw-bd-color: {{VALUE}};',
 				),
 			)
@@ -265,7 +294,7 @@ class TweTimelineWidget extends Widget_Base {
 			'twe_custom_story_title_color',
 			array(
 				'label'     => __( 'Title Color', '3r-elementor-timeline-widget' ),
-				'type'      => \Elementor\Controls_Manager::COLOR,
+				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .twae-wrapper {{CURRENT_ITEM}}' => '--tw-cbx-title-color: {{VALUE}}',
 				),
@@ -277,7 +306,7 @@ class TweTimelineWidget extends Widget_Base {
 			'twe_custom_description_color',
 			array(
 				'label'     => __( 'Description Color', '3r-elementor-timeline-widget' ),
-				'type'      => \Elementor\Controls_Manager::COLOR,
+				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .twae-wrapper {{CURRENT_ITEM}}' => '--tw-cbx-des-color: {{VALUE}}',
 				),
@@ -288,7 +317,7 @@ class TweTimelineWidget extends Widget_Base {
 				'twe_add_icon_on_line',
 				[
 					'label'        => __( 'Add Icon on Line', '3r-elementor-timeline-widget' ),
-					'type'         => \Elementor\Controls_Manager::SWITCHER,
+					'type'         => Controls_Manager::SWITCHER,
 					'label_on'     => __( 'Yes', '3r-elementor-timeline-widget' ),
 					'label_off'    => __( 'No', '3r-elementor-timeline-widget' ),
 					'return_value' => 'yes',
@@ -301,7 +330,7 @@ class TweTimelineWidget extends Widget_Base {
 			'twe_title_link',
 			array(
 				'label'        => __( 'Read More Button', '3r-elementor-timeline-widget' ),
-				'type'         => \Elementor\Controls_Manager::SWITCHER,
+				'type'         => Controls_Manager::SWITCHER,
 				'label_on'     => __( 'Show', 'twae' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- using shared text domain intentionally
 				'label_off'    => __( 'Hide', 'twae' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch -- using shared text domain intentionally
 				'return_value' => 'yes',
@@ -311,10 +340,13 @@ class TweTimelineWidget extends Widget_Base {
 
 		$repeater->end_controls_tab();
 		$repeater->end_controls_tabs(); 
+	}
+
+	private function register_timeline_repeater_control( $repeater ) {
 		$this->add_control(
 			'list',
 			[
-				'type' => \Elementor\Controls_Manager::REPEATER,
+				'type' => Controls_Manager::REPEATER,
 				'fields' =>  $repeater->get_controls(),
 				'default' => [
 					[
@@ -333,33 +365,37 @@ class TweTimelineWidget extends Widget_Base {
 				'title_field' => '{{{ elementor.helpers.sanitize( list_title ) }}}',
 			]
 		);
-          
-              
-           
-			
-                
-		if ( !file_exists( WP_PLUGIN_DIR . '/timeline-widget-addon-for-elementor-pro/timeline-widget-addon-pro-for-elementor.php' )){
-				if ( get_option( 'twae_hide_upgrade_notice_editor' ) !== 'yes' ) {
+	}
+
+	/**
+	 * Register upgrade notice control in the content section.
+	 *
+	 * @since 1.0.0
+	 * @access private
+	 */
+	private function register_upgrade_notice() {
+		if ( ! file_exists( WP_PLUGIN_DIR . '/timeline-widget-addon-for-elementor-pro/timeline-widget-addon-pro-for-elementor.php' ) ) {
+			if ( get_option( 'twae_hide_upgrade_notice_editor' ) !== 'yes' ) {
 				$this->add_control(
 					'twae_upgrade_notice',
 					[
-						'type' => \Elementor\Controls_Manager::RAW_HTML,
+						'type' => Controls_Manager::RAW_HTML,
 						'raw'  => '<div class="elementor-control-raw-html">
 							<div class="elementor-control-notice elementor-control-notice-type-info twae-upgrade-pro-notice" style="position: relative;">
 								<button type="button" class="elementor-control-notice-dismiss twae_hide_upgrade_notice_editor" style="position: absolute; top: 5px; right: 5px; z-index: 10;">
 									<i class="eicon-close"></i>
 								</button>
 								<div class="elementor-control-notice-icon">
-									<img class="twae-highlight-icon" src="'.esc_url( TWE_PLUGIN_URL . 'assets/images/twae-highlight-icon.svg' ).'" width="250" alt="Highlight Icon" style="filter: brightness(0) saturate(100%) invert(32%) sepia(84%) saturate(627%) hue-rotate(190deg) brightness(92%) contrast(92%);" />
+									<img class="twae-highlight-icon" src="'.esc_url( TWE_PLUGIN_URL . 'assets/images/twae-highlight-icon.svg' ).'" width="250" alt="' . esc_attr__( 'Highlight Icon', '3r-elementor-timeline-widget' ) . '" style="filter: brightness(0) saturate(100%) invert(32%) sepia(84%) saturate(627%) hue-rotate(190deg) brightness(92%) contrast(92%);" />
 								</div>
 								<div class="elementor-control-notice-main">
 									<div class="elementor-control-notice-main-content">
-										Want more advanced features? Upgrade to the Pro version.
+										'.esc_html__( 'Want more advanced features? Upgrade to the Pro version.', '3r-elementor-timeline-widget' ).'
 									</div>
 									<div class="elementor-control-notice-main-actions">
 										<a class="elementor-button e-btn e-info e-btn-1" style="color:white;"
 										href="https://cooltimeline.com/plugin/elementor-timeline-widget-pro/?utm_source=vtwe_plugin&utm_medium=inside&utm_campaign=get_pro&utm_content=content_tab_settings#pricing"
-										target="_blank">
+										target="_blank" rel="noopener noreferrer">
 											Get Pro
 										</a>
 									</div>
@@ -370,26 +406,33 @@ class TweTimelineWidget extends Widget_Base {
 					]
 				);
 			}
+		}
 	}
 
-		if ( defined( 'TWAE_PRO_VERSION' ) || defined( 'TWAE_VERSION' ) ) { 
-			if (get_option('twe_hide_migration_notice') !== 'yes' ) {
-
+	/**
+	 * Register migration notice control in the content section.
+	 *
+	 * @since 1.0.0
+	 * @access private
+	 */
+	private function register_migration_notice() {
+		if ( defined( 'TWAE_PRO_VERSION' ) || defined( 'TWAE_VERSION' ) ) {
+			if ( get_option( 'twe_hide_migration_notice' ) !== 'yes' ) {
 				$this->add_control(
 					'twae_migrate_notice',
 					[
-						'type' => \Elementor\Controls_Manager::RAW_HTML,
+						'type' => Controls_Manager::RAW_HTML,
 						'raw'  => '<div class="elementor-control-raw-html">
 							<div class="elementor-control-notice elementor-control-notice-type-info twae-migration-notice" style="position: relative;">
 								<button type="button" class="elementor-control-notice-dismiss twae_hide_migration_notice_editor" style="position: absolute; top: 5px; right: 5px; z-index: 10;">
 									<i class="eicon-close"></i>
 								</button>
 								<div class="elementor-control-notice-icon">
-									<img class="twae-highlight-icon" src="'.esc_url( TWE_PLUGIN_URL . 'assets/images/twae-highlight-icon.svg' ).'" width="250" alt="Highlight Icon" style="filter: brightness(0) saturate(100%) invert(32%) sepia(84%) saturate(627%) hue-rotate(190deg) brightness(92%) contrast(92%);" />
+									<img class="twae-highlight-icon" src="'.esc_url( TWE_PLUGIN_URL . 'assets/images/twae-highlight-icon.svg' ).'" width="250" alt="' . esc_attr__( 'Highlight Icon', '3r-elementor-timeline-widget' ) . '" style="filter: brightness(0) saturate(100%) invert(32%) sepia(84%) saturate(627%) hue-rotate(190deg) brightness(92%) contrast(92%);" />
 								</div>
 								<div class="elementor-control-notice-main">
 									<div class="elementor-control-notice-main-content">
-										Do you want to migrate this timeline into Timeline Widget Pro to use the advanced features?
+										'.esc_html__( 'Do you want to migrate this timeline into Timeline Widget Pro to use the advanced features?', '3r-elementor-timeline-widget' ).'
 									</div>
 									<div class="elementor-control-notice-main-actions">
 										<button type="button" class="elementor-button e-btn e-info e-btn-1" id="twae-run-migration">Migrate Now</button>
@@ -402,14 +445,20 @@ class TweTimelineWidget extends Widget_Base {
 				);
 			}
 		}
-		
-	  $this->end_controls_section();
-       
-	  $this->start_controls_section(
+	}
+
+	/**
+	 * Register layout section controls.
+	 *
+	 * @since 1.0.0
+	 * @access private
+	 */
+	private function register_layout_section() {
+		$this->start_controls_section(
 			'twe_layout_section',
 			array(
 				'label' => __( 'Layout Settings', '3r-elementor-timeline-widget' ),
-				'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+				'tab'   => Controls_Manager::TAB_CONTENT,
 			)
 		);
 		// Select Layout
@@ -417,17 +466,17 @@ class TweTimelineWidget extends Widget_Base {
 			'twe_layout',
 			array(
 				'label'   => __( 'Layout', '3r-elementor-timeline-widget' ),
-				'type'    => \Elementor\Controls_Manager::SELECT,
+				'type'    => Controls_Manager::SELECT,
 				'default' => 'centered',
 				'options' => array(
-					'centered'               => 'Vertical Right / Left (Free)',
-					'one-sided'              => 'Vertical Right Only(Free)',
-					'left-sided'             => 'Vertical Left Only(Pro)',
-					'compact'                => 'Vertical Compact(Pro)',
-					'modern'                    => 'Vertical Tab(Pro)',
-					'horizontal'             => 'Horizontal Top(Pro)',
-					'horizontal-bottom'      => 'Horizontal Bottom(Pro)',
-					'horizontal-highlighted' => 'Horizontal Highlighted(Pro)',
+					'centered'               => esc_html__( 'Vertical Right / Left (Free)', '3r-elementor-timeline-widget' ),
+					'one-sided'              => esc_html__( 'Vertical Right Only(Free)', '3r-elementor-timeline-widget' ),
+					'left-sided'             => esc_html__( 'Vertical Left Only(Pro)', '3r-elementor-timeline-widget' ),
+					'compact'                => esc_html__( 'Vertical Compact(Pro)', '3r-elementor-timeline-widget' ),
+					'modern'                    => esc_html__( 'Vertical Tab(Pro)', '3r-elementor-timeline-widget' ),
+					'horizontal'             => esc_html__( 'Horizontal Top(Pro)', '3r-elementor-timeline-widget' ),
+					'horizontal-bottom'      => esc_html__( 'Horizontal Bottom(Pro)', '3r-elementor-timeline-widget' ),
+					'horizontal-highlighted' => esc_html__( 'Horizontal Highlighted(Pro)', '3r-elementor-timeline-widget' )
 				),
 			)
 		);
@@ -438,7 +487,7 @@ class TweTimelineWidget extends Widget_Base {
 			'twe_content_alignment',
 			array(
 				'label'     => esc_html__( 'Content Alignment', '3r-elementor-timeline-widget' ),
-				'type'      => \Elementor\Controls_Manager::CHOOSE,
+				'type'      => Controls_Manager::CHOOSE,
 				'separator' => 'before',
 				'options'   => array(
 					'left'   => array(
@@ -465,7 +514,7 @@ class TweTimelineWidget extends Widget_Base {
 			'twe_display_icons',
 			array(
 				'label'   => esc_html__( 'Display Icons', '3r-elementor-timeline-widget' ),
-				'type'    => \Elementor\Controls_Manager::CHOOSE,
+				'type'    => Controls_Manager::CHOOSE,
 				'options' => array(
 					'displayicons' => array(
 						'title' => esc_html__( 'Icons', '3r-elementor-timeline-widget' ),
@@ -490,7 +539,7 @@ class TweTimelineWidget extends Widget_Base {
 			'twe_animation',
 			array(
 				'label'     => __( 'Animations', '3r-elementor-timeline-widget' ),
-				'type'      => \Elementor\Controls_Manager::SELECT,
+				'type'      => Controls_Manager::SELECT,
 				'default'   => 'fade',
 				'options' => array(
 					'none'            => 'none',
@@ -507,11 +556,11 @@ class TweTimelineWidget extends Widget_Base {
 			$this->add_control(
 				'twe_upgrade_button_layout_section',
 				[
-					'type' => \Elementor\Controls_Manager::RAW_HTML,
+					'type' => Controls_Manager::RAW_HTML,
 					'raw'  => '
 						<div class="twe-upgrade-button-notice-layout-section">
 							<a href="https://cooltimeline.com/plugin/elementor-timeline-widget-pro/?utm_source=vtwe_plugin&utm_medium=inside&utm_campaign=get_pro&utm_content=layout_tab_settings#pricing" 
-							target="_blank" 
+							target="_blank" rel="noopener noreferrer"
 							class="twae-upgrade-link">
 								UPGRADE TO PRO 💎
 							</a>
@@ -521,16 +570,31 @@ class TweTimelineWidget extends Widget_Base {
 				]
 			);
 		$this->end_controls_section();
+	}
 
-	/*------- BoxStyle ------------*/
-	$this->start_controls_section(
+	/**
+	 * Register style tab sections.
+	 *
+	 * @since 1.0.0
+	 * @access private
+	 */
+	private function register_style_sections() {
+		$this->register_content_style();
+		$this->register_box_style();
+		$this->register_image_style();
+	}
+
+	private function register_content_style() {
+
+	 /*------- BoxStyle ------------*/
+	 $this->start_controls_section(
 		'content_style',
 		[
 			'label' => __( 'Content Style', '3r-elementor-timeline-widget' ),
 			'tab' => Controls_Manager::TAB_STYLE,
 		]
-	);
-	$this->add_control(
+    	);
+	 $this->add_control(
 		'header_size',
 		[
 			'label' => esc_html__( 'Title HTML Tag', '3r-elementor-timeline-widget' ),
@@ -548,35 +612,35 @@ class TweTimelineWidget extends Widget_Base {
 			],
 			'default' => 'h2',
 		]
-	);
-	$this->add_control(
+		);
+	 $this->add_control(
 		'title_color', [
 		'label' => __( 'Title Fonts Color', '3r-elementor-timeline-widget' ),
-		'type' => \Elementor\Controls_Manager::COLOR,
+		'type' => Controls_Manager::COLOR,
 		'selectors' => [
 				'{{WRAPPER}} .tl-heading .tl-content .be-desc .be-title' => 'color: {{VALUE}}',
 			],
 		'default' => '#333333',
-	]
-	);
+	 ]
+    	);
 	
-    $this->add_group_control(
+  	  $this->add_group_control(
 		Group_Control_Typography::get_type(),
 		[
-			'label' => 'Title Typography',
+			'label' => esc_html__( 'Title Typography', '3r-elementor-timeline-widget' ),
 			'name' => 'tile_typography',
 			'selector' => '{{WRAPPER}} .be-pack .tl-heading .be-title',
 		]
-	);
-    $this->add_group_control(
+		);
+  	  $this->add_group_control(
 		Group_Control_Text_Shadow::get_type(),
 		[
-			'label' => 'Title Text Shadow',
+			'label' => esc_html__( 'Title Text Shadow', '3r-elementor-timeline-widget' ),
 			'name' => 'text_shadow',
 			'selector' => '{{WRAPPER}} .tl-heading .be-title',
 		]
-	);
-    $this->add_control(
+		);
+  	  $this->add_control(
 		'title_margin',
 		[
 			'label' => __( 'Title Margin', '3r-elementor-timeline-widget' ),
@@ -587,28 +651,31 @@ class TweTimelineWidget extends Widget_Base {
 			],
             'separator'=>'after',
 		]
-	);
-	$this->add_control(
+		);
+		$this->add_control(
 		'content_color', [
 		'label' => __( 'Content Fonts Color', '3r-elementor-timeline-widget' ),
-		'type' => \Elementor\Controls_Manager::COLOR,
+		'type' => Controls_Manager::COLOR,
 		'selectors' => [
-			'{{WRAPPER}} .be-pack .timeline-panel, {{WRAPPER}} .be-pack .timeline-panel p' => 'color: {{content_color}}',
+			'{{WRAPPER}} .be-pack .timeline-panel, {{WRAPPER}} .be-pack .timeline-panel p' => 'color: {{VALUE}}',
 		],
 		'default' => '#333333',
-	]
-	);
+		]
+			);
 	
-	$this->add_group_control(
+		$this->add_group_control(
 		Group_Control_Typography::get_type(),
-		[	'label' => 'Content Typography',
+		[	'label' => esc_html__( 'Content Typography', '3r-elementor-timeline-widget' ),
 			'name' => 'content_typography',
 			'selector' => '{{WRAPPER}} .be-pack .timeline-panel',
 		]
-	);
+		);
    
-	$this->end_controls_section();
-	//=======Content style =======
+		$this->end_controls_section();
+	}
+
+	private function register_box_style() {
+		//=======Content style =======
 		$this->start_controls_section(
 			'section_title_style',
 			[
@@ -621,11 +688,11 @@ class TweTimelineWidget extends Widget_Base {
 				'theme_color',
 				[
 					'label' => __( 'Border Color', '3r-elementor-timeline-widget' ),
-					'type'  => \Elementor\Controls_Manager::COLOR,
+					'type'  => Controls_Manager::COLOR,
 					'selectors' => [
 
 						'{{WRAPPER}} .timeline li .tl-circ' =>
-							'background: {{theme_color}}; border:5px solid #e6e6e6 !important;',
+							'background: {{VALUE}}; border:5px solid #e6e6e6 !important;',
 
 						'{{WRAPPER}} .timeline li .timeline-panel' =>
 							'border-color: {{theme_color}};',
@@ -651,7 +718,7 @@ class TweTimelineWidget extends Widget_Base {
 			'bg_color',
 			[
 				'label' => __( 'Background Color', '3r-elementor-timeline-widget' ),
-				'type'  => \Elementor\Controls_Manager::COLOR,
+				'type'  => Controls_Manager::COLOR,
 				'default' => '#fff',
 				'selectors' => [
 
@@ -675,7 +742,7 @@ class TweTimelineWidget extends Widget_Base {
 		'circle_color',
 		[
 			'label' => __( 'Icon Background / Connector Color', '3r-elementor-timeline-widget' ),
-			'type'  => \Elementor\Controls_Manager::COLOR,
+			'type'  => Controls_Manager::COLOR,
 			'selectors' => [
 
 				'{{WRAPPER}} .timeline li .tl-circ' =>
@@ -691,7 +758,7 @@ class TweTimelineWidget extends Widget_Base {
 					'border-right-color: {{VALUE}}; border-left-width:0;',
 			],
 		]
-	);
+		);
 
 
 
@@ -707,7 +774,7 @@ class TweTimelineWidget extends Widget_Base {
 			'tl_change_direction',
 			[
 				'label' => __( 'Direction', '3r-elementor-timeline-widget' ),
-				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'type' => Controls_Manager::SWITCHER,
 				'label_on' => __( 'Left', '3r-elementor-timeline-widget' ),
 				'label_off' => __( 'Right', '3r-elementor-timeline-widget' ),
 				'return_value' => 'left',
@@ -720,6 +787,9 @@ class TweTimelineWidget extends Widget_Base {
 		);
 	
 		$this->end_controls_section();
+	}
+
+	private function register_image_style() {
 		$this->start_controls_section(
 			'image_style',
 			[
@@ -783,9 +853,7 @@ class TweTimelineWidget extends Widget_Base {
 		);
 
 		$this->end_controls_section();
-
 	}
-		
 
 	/**
 	 * Render widget output on the frontend.
@@ -797,31 +865,42 @@ class TweTimelineWidget extends Widget_Base {
 	 */
 	protected function render() {
 		$settings = $this->get_settings_for_display();
-		$is_one_sided = ( isset( $settings['twe_layout'] ) && $settings['twe_layout'] === 'one-sided' );
+		$is_one_sided = ( isset( $settings['twe_layout'] ) && $settings['twe_layout'] === 'one-sided' ) ? 'timeline-one-sided'
+		: '';
 		$direction = isset($settings['tl_change_direction']) ? $settings['tl_change_direction'] : '';
 		$data	  = !empty($settings['list']) && is_array($settings['list']) ? $settings['list'] : [];
 		$this->add_render_attribute( 'title', 'class', 'be-title' );
         $direction = in_array($direction, array('left', ''), true) ? $direction : '';
+			
 
-		$layout_class = ( isset( $settings['twe_layout'] ) && $settings['twe_layout'] === 'one-sided' )
-			? 'timeline-one-sided'
-			: '';
-
-		echo '<ul class="be-pack timeline ' . esc_attr( $layout_class ) . '">';
+		echo '<ul class="be-pack timeline ' . esc_attr( $is_one_sided ) . '">';
         
 		$count = ( $direction === 'left' ) ? 1 : 0;
 		if ( empty( $data ) ) {
 			echo '</ul>'; return;
 		}
+		$image_allowed_tags = [
+			'img' => [
+				'src'    => [],
+				'alt' => [],
+				'title'  => [],
+				'width'  => [],
+				'height' => [],
+				'class'  => [],
+			],
+			'div' => [
+				'class' => [],
+			],
+		];
 		foreach($data as $index=>$content){
 		    $title_html = sprintf(
 				'<%1$s %2$s>%3$s</%1$s>',
 				Utils::validate_html_tag( isset($settings['header_size']) ? $settings['header_size'] : 'h2' ),
 				$this->get_render_attribute_string( 'title' ),
-				esc_html( $content['list_title'] )
+				isset($content['list_title']) ? esc_html( $content['list_title'] ) : ''
 			);
 
-         $content_html = '<div class="be-content">' . wp_kses_post( $content['list_content'] ) . '</div>';
+         $content_html = '<div class="be-content">' .(!empty($content['list_content']) ? wp_kses_post( $content['list_content'] ) : '') . '</div>';
 		    
 		    $image = '';
 
@@ -838,10 +917,6 @@ class TweTimelineWidget extends Widget_Base {
 				}
 			} 
 
-
-			else {
-				$class = 'd-block';
-			}
 
 			if ( $is_one_sided ) {
 
@@ -865,6 +940,13 @@ class TweTimelineWidget extends Widget_Base {
 		   <div class="tl-heading">
 			 <div class="tl-content">
 
+			<?php $image_html = wp_kses(
+							$image,
+							$image_allowed_tags
+						);
+					
+						?>
+
 			    <?php if ( $is_one_sided ) : ?>
 
 						<div class="be-desc">
@@ -872,42 +954,14 @@ class TweTimelineWidget extends Widget_Base {
 						</div>
 
 						<?php
-						echo wp_kses(
-							$image,
-							[
-								'img' => [
-									'src'    => [],
-									'title'  => [],
-									'width'  => [],
-									'height' => [],
-									'class'  => [],
-								],
-								'div' => [
-									'class' => [],
-								],
-							]
-						);
+						echo $image_html;// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- already escaped in $image, $image_allowed_tag
 						?>
 						<?php echo $content_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- already escaped in $content_html ?>
 
 			     <?php else : ?>
 
 						<?php
-						echo wp_kses(
-							$image,
-							[
-								'img' => [
-									'src'    => [],
-									'title'  => [],
-									'width'  => [],
-									'height' => [],
-									'class'  => [],
-								],
-								'div' => [
-									'class' => [],
-								],
-							]
-						);
+						echo $image_html;// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- already escaped in $image, $image_allowed_tag
 						?>
 
 						<div class="be-desc">
