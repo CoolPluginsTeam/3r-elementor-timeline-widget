@@ -3,7 +3,7 @@ Contributors: satindersingh,coolplugins,narinder-singh,rafiul17
 Donate link: https://paypal.me/CoolPlugins/10USD/
 Tags: Elementor, vertical-timeline, elementor-timeline, timeline, widget
 Requires at least: 5.2
-Tested up to: 7.0
+Tested up to: 7.1
 Requires PHP: 7.2
 Stable tag: 2.7.6
 License: GPL v2 or later
